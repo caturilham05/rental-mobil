@@ -56,7 +56,7 @@
       <div class="collapse navbar-collapse" id="navigation">
         <ul class="nav navbar-nav">
           <li><a href="index.php">Home</a></li>        	 
-          <li><a href="page.php?type=aboutus">Tentang Kami</a></li>
+          <li><a href="#about">Tentang Kami</a></li>
           <li><a href="car-listing.php">Daftar Mobil</a>
           <li><a href="page.php?type=faqs">FAQs</a></li>
           <li><a href="contact-us.php">Hubungi Kami</a></li>

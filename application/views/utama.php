@@ -41,7 +41,7 @@
 
 <!-- Banners -->
 <section id="banner" class="banner-section">
-  <div class="container">
+  <div class="container" >
     <div class="div_zindex">
       <div class="row">
         <div class="col-md-5 col-md-push-7">
@@ -93,6 +93,17 @@
 </section>
 <!-- /Resent Cat --> 
 
+<!-- abaout -->
+<section class="about_us section-padding">
+  <div class="container" id="about">
+    <div class="section-header text-center">
+      <h2>Tentang Kami</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel provident odio doloribus laudantium fugit qui modi eum, assumenda fuga, aut illo sint enim esse unde sapiente repellendus similique! In non provident nesciunt ratione unde expedita error aliquam rem architecto cupiditate, optio vitae labore nostrum deleniti, consequatur, assumenda perferendis odit dolorum? Molestias labore nobis reiciendis? Tempore quis voluptatem quos perferendis rerum aspernatur. Quod quibusdam soluta, ab, itaque sunt voluptates necessitatibus et ipsa quidem doloribus iusto obcaecati praesentium ratione? Autem adipisci blanditiis suscipit a dolor, quaerat recusandae, soluta neque distinctio nisi maxime sunt exercitationem nemo accusantium est repellat iusto commodi, sint sit?</p>
+    </div>
+  </div>
+</section>
+<!-- akhir abaout -->
+
 
 <!--Footer -->
 <?php $this->load->view('home/template/footer')?>
@@ -123,6 +134,8 @@
 <!--Slider-JS--> 
 <script src="<?= base_url('assets/js/slick.min.js')?>"></script> 
 <script src="<?= base_url('assets/js/owl.carousel.min.js')?>"></script>
+
+<script src="<?= base_url('assets/js/scroll.js')?>"></script>
 
 </body>
 
