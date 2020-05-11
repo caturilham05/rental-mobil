@@ -8,7 +8,7 @@ class Pembayaran extends CI_Controller {
         parent::__construct();
         check_not_login();
         //check_admin();
-		$this->load->model('pembayaran_m');
+		$this->load->model(['pembayaran_m', 'mobil_m']);
 		$this->load->library('form_validation');
     }
 

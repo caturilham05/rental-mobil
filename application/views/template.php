@@ -121,46 +121,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </a>
         </li>
 
-        <li class="treeview <?= $this->uri->segment(1) == 'sewa' || $this->uri->segment(1) == 'unit' || $this->uri->segment(1) == 'item'  ? 'active'  : '' ?>">
+        <li class="treeview <?= $this->uri->segment(1) == 'sewa' || $this->uri->segment(1) == 'menunggu%20pembayaran' || $this->uri->segment(1) == 'menunggu%20konfirmasi' || $this->uri->segment(1) == 'pengembalian'  ? 'active'  : '' ?>">
           <a href="#">
-            <i class="fa fa-car"></i>
+            <i class="fa fa-th-list"></i>
             <span>Sewa Mobil</span>
             <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
+            <li <?= $this->uri->segment(1) == 'menunggu%20pembayaran' ? 'class="active"' : '' ?>><a href="<?php echo site_url('menunggu%20pembayaran')?>"><i class="fa fa-circle-o"></i>Menunggu Pembayaran</a></li>
+            <li <?= $this->uri->segment(1) == 'menunggu%20konfirmasi' ? 'class="active"' : '' ?>><a href="<?php echo site_url('menunggu%20konfirmasi')?>"><i class="fa fa-circle-o"></i>Menunggu Konfirmasi</a></li>
+            <li <?= $this->uri->segment(1) == 'pembayaran_v' ? 'class="active"' : '' ?>><a href="<?php echo site_url('pembayaran_v')?>"><i class="fa fa-circle-o"></i>Data Pembayaran</a></li>
+            <li <?= $this->uri->segment(1) == 'pengembalian' ? 'class="active"' : '' ?>><a href="<?php echo site_url('pengembalian')?>"><i class="fa fa-circle-o"></i>Data Pengembalian Mobil</a></li>
             <li <?= $this->uri->segment(1) == 'sewa' ? 'class="active"' : '' ?>><a href="<?php echo site_url('sewa')?>"><i class="fa fa-circle-o"></i>Data Sewa</a></li>
-            <li><a href="<?php //echo site_url('stock/in')?>"><i class="fa fa-circle-o"></i>Menunggu Pembayaran</a></li>
-            <li><a href="<?php //echo site_url('')?>"><i class="fa fa-circle-o"></i>Menunggu Konfirmasi</a></li>
-            <li><a href="<?php //echo site_url('')?>"><i class="fa fa-circle-o"></i>Data Pengembalian Mobil</a></li>
           </ul>
         </li>
-        <li class="treeview <?//= $this->uri->segment(1) == 'category' || $this->uri->segment(1) == 'unit' || $this->uri->segment(1) == 'item'  ? 'active'  : '' ?>">
-          <a href="#">
-            <i class="fa fa-cube"></i>
-            <span>Products</span>
+        <li <?= $this->uri->segment(1) == 'mobil' || $this->uri->segment(1) == '' ? 'class="active"' : '' ?>>
+          <a href="<?php echo site_url('mobil')?>">
+            <i class="fa fa-car"></i> <span>Mobil</span>
             <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu">
-            <li <?//= $this->uri->segment(1) == 'category' ? 'class="active"' : '' ?>><a href="<?php //echo site_url('category')?>"><i class="fa fa-circle-o"></i>Category</a></li>
-            <li <?//= $this->uri->segment(1) == 'unit' ? 'class="active"' : '' ?>><a href="<?php //echo site_url('unit')?>"><i class="fa fa-circle-o"></i>Unit</a></li>
-            <li <?//= $this->uri->segment(1) == 'item' ? 'class="active"' : '' ?>><a href="<?php //echo site_url('item')?>"><i class="fa fa-circle-o"></i>Items</a></li>
-          </ul>
         </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-pie-chart"></i>
-            <span>Reports</span>
+        <li <?= $this->uri->segment(1) == 'driver' || $this->uri->segment(1) == '' ? 'class="active"' : '' ?>>
+          <a href="<?php echo site_url('driver')?>">
+            <i class="fa fa-money"></i> <span>Biaya Driver</span>
             <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="<?php //echo site_url('supplier/supplier_data')?>"><i class="fa fa-circle-o"></i>Data Suppliers</a></li>
-          </ul>
         </li>
         <?php if($this->fungsi->user_login()->level == 'admin') { ?>
         <li class="header">SETTINGS</li>
