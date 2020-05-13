@@ -11,3 +11,9 @@ $route['admin'] = 'auth/login';
 $route['menunggu%20pembayaran'] = 'pembayaran';
 // Menunggu Konfirmasi
 $route['menunggu%20konfirmasi'] = 'konfirmasi';
+// Daftar Mobil
+$route['daftar-mobil'] = 'daftarmobil';
+// detail mobil
+$route['detail-mobil/(:num)'] = 'daftarmobil/detail/$1';
+
+

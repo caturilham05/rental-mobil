@@ -12,6 +12,35 @@ class Mobil_m extends CI_Model {
         $query = $this->db->get();
         return $query;
     }
+    
+    public function get_new($id = null){
+        $this->db->from('mobil');
+        if($id != null){
+            $this->db->where('id_mobil', $id);
+        }
+        $this->db->limit(3);
+        $this->db->order_by('id_mobil', 'DESC');
+        $query = $this->db->get();
+        return $query;
+    }
+    
+    public function terbaru($id = null){
+        $this->db->from('mobil');
+        if($id != null){
+            $this->db->where('id_mobil', $id);
+        }
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function get_id($id = null){
+        $this->db->from('mobil');
+        if($id != null){
+            $this->db->where('id_mobil', $id);
+        }
+        $query = $this->db->get();
+        return $query;   
+    }
 
     public function add($post){
         $params= [
@@ -21,7 +50,24 @@ class Mobil_m extends CI_Model {
             'harga' => $post['harga'],
             'bahanbakar' => $post['bahanbakar'],
             'tahun' => $post['tahun'],
-            'gambar' => $post['gambar']
+            'deskripsi' => $post['deskripsi'],
+            'gambar' => $post['gambar'],
+            'gambar2' => $post['gambar2'],
+            'gambar3' => $post['gambar3'],
+            'gambar4' => $post['gambar4'],
+            'gambar5' => $post['gambar5'],
+            'AC' => $post['AC'],
+            'doorlock' => $post['doorlock'],
+            'antilockbrakingsystem' => $post['antilockbrakingsystem'],
+            'brakeassist' => $post['brakeassist'],
+            'powersteering' => $post['powersteering'],
+            'driveairbag' => $post['driveairbag'],
+            'passengerairbag' => $post['passengerairbag'],
+            'powerwindows' => $post['powerwindows'],
+            'cdplayer' => $post['cdplayer'],
+            'centrallocking' => $post['centrallocking'],
+            'crashsensor' => $post['crashsensor'],
+            'leatherseats' => $post['leatherseats']
         ];
         $this->db->insert('mobil', $params);
     }
@@ -34,9 +80,26 @@ class Mobil_m extends CI_Model {
             'harga' => $post['harga'],
             'bahanbakar' => $post['bahanbakar'],
             'tahun' => $post['tahun'],
+            'deskripsi' => $post['deskripsi'],
+            'AC' => $post['AC'],
+            'doorlock' => $post['doorlock'],
+            'antilockbrakingsystem' => $post['antilockbrakingsystem'],
+            'brakeassist' => $post['brakeassist'],
+            'powersteering' => $post['powersteering'],
+            'driveairbag' => $post['driveairbag'],
+            'passengerairbag' => $post['passengerairbag'],
+            'powerwindows' => $post['powerwindows'],
+            'cdplayer' => $post['cdplayer'],
+            'centrallocking' => $post['centrallocking'],
+            'crashsensor' => $post['crashsensor'],
+            'leatherseats' => $post['leatherseats']
         ];
-        if($post['gambar'] != null){
+        if($post(['gambar', 'gambar2', 'gambar3', 'gambar4', 'gambar5']) != null){
             $params['gambar'] = $post['gambar'];
+            // $params['gambar2'] = $post['gambar2'];
+            // $params['gambar3'] = $post['gambar3'];
+            // $params['gambar4'] = $post['gambar4'];
+            // $params['gambar5'] = $post['gambar5'];
         }
         $this->db->where('id_mobil', $post['id_mobil']);
         $this->db->update('mobil', $params);

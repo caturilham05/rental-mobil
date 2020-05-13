@@ -50,6 +50,11 @@
                         <label for="tahun">Tahun Mobil</label>
                         <input type="text" name="tahun" value="<?=$row->tahun?>"class="form-control" required/>
                     </div>
+                    
+                    <div class="form-group">
+                        <label for="deskripsi">Deskripsi</label>
+                        <textarea name="deskripsi" cols="52" rows="5"><?=$row->deskripsi?></textarea>
+                    </div>
 
                     <div class="form-group">
                         <label for="gambar">Gambar Mobil</label>
@@ -77,3 +82,4 @@
         </div>
     </div>
 </section>
+

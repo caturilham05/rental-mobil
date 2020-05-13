@@ -28,6 +28,7 @@
                         <th>Harga Sewa</th>
                         <th>BB</th>
                         <th>Tahun</th>
+                        <th>Deskripsi</th>
                         <th>Gambar</th>
                         <th>Action</th>
                     </tr>
@@ -44,6 +45,7 @@
                         <td><?=$data->harga?></td>
                         <td><?=$data->bahanbakar?></td>
                         <td><?=$data->tahun?></td>
+                        <td style="width: 10%"><?=substr($data->deskripsi,0,40)?></td>
                         <td>
                             <?php if($data->gambar != null): ?>
                             <img src="<?=base_url('uploads/mobil/'.$data->gambar)?>" style="width: 100px">

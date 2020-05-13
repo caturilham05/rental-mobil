@@ -28,6 +28,20 @@ class Mobil extends CI_Controller {
 		$mobil->harga = null;
 		$mobil->bahanbakar = null;
 		$mobil->tahun = null;
+		$mobil->deskripsi = null;
+		$mobil->AC = null;
+		$mobil->doorlock = null;
+		$mobil->antilockbrakingsystem = null;
+		$mobil->brakeassist = null;
+		$mobil->powersteering = null;
+		$mobil->driveairbag = null;
+		$mobil->passengerairbag = null;
+		$mobil->powerwindows = null;
+		$mobil->cdplayer = null;
+		$mobil->centrallocking = null;
+		$mobil->crashsensor = null;
+		$mobil->leatherseats = null;
+		
 		$data = array(
 			'page' => 'add',
 			'row' => $mobil
@@ -53,6 +67,7 @@ class Mobil extends CI_Controller {
 	}
 
 	public function proses(){
+
 		$config['upload_path']   = './uploads/mobil/';
 		$config['allowed_types'] = '|jpg|png|jpeg';
 		$config['max_size']      = 2048;
@@ -68,7 +83,7 @@ class Mobil extends CI_Controller {
 						if($this->db->affected_rows() == 1){
 							$this->session->set_flashdata('success', 'Data Berhasil Disimpan!');
 						}
-						echo "<script>window.location='".site_url('mobil')."';</script>";
+						 echo "<script>window.location='".site_url('mobil')."';</script>";
 					}else{
 						$err = $this->upload->display_errors();
 						$this->session->set_flashdata('err', $err);
@@ -114,7 +129,7 @@ class Mobil extends CI_Controller {
 		if($this->db->affected_rows() == 1){
 			$this->session->set_flashdata('success', 'Data Berhasil Disimpan!');
 		}
-		echo "<script>window.location='".site_url('gambar')."';</script>";
+		echo "<script>window.location='".site_url('mobil')."';</script>";
 	}
 
 	public function del($id){
