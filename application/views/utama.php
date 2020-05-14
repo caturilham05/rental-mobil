@@ -81,7 +81,7 @@
               </div>
               <div class="car-title-m">
                 <h6><a href="#"><?=$data->merek?> , <?=$data->nama_mobil?></a></h6>
-                <span class="price">Rp.<?=$data->harga?> / Hari</span> 
+                <span class="price">Rp.<?=number_format($data->harga,0,',','.')?> / Hari</span> 
               </div>
               <div class="inventory_info_m">
                 <p><?=substr($data->deskripsi,0,100)?> .....</p>

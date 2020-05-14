@@ -38,6 +38,97 @@
     <?php $this->load->view('home/template/header')?>
     <!-- /Header --> 
 
+	<!-- detail mobil -->
+	<?php foreach($row->result() as $detail => $data):?>
+	<section class="listing-detail">
+		<div class="container">
+			<div class="listing_detail_head row">
+				<div class="col-md-9">
+					<h2><?= $data->merek?> , <?= $data->nama_mobil?></h2>
+					<img src="<?= base_url('uploads/mobil/'.$data->gambar)?>" alt="">
+				</div>
+				<div class="col-md-3">
+					<div class="price_info">
+						<h6><p>Rp. <?= number_format($data->harga,0,',','.')?></p> / Hari</h6>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-9">
+					<div class="main_features">
+						<ul>
+							<li><i class="fa fa-calendar"></i>
+								<h5><?= $data->tahun?></h5>
+								<bold>Tahun Mobil</bold>
+							</li>
+							<li><i class="fa fa-cogs"></i>
+								<h5><?= $data->bahanbakar?></h5>
+								<bold>Bahan Bakar</bold>
+							</li>
+						</ul>
+					</div>
+					<div class="listing_more_info">
+						<div class="listing_detail_wrap">
+							<ul class="nav nav-tabs gray-bg" role="tablist">
+								<li class="active" role="presentation">
+									<a href="#vehicle-overview" aria-controls="vehicle-overview" role="tab" data-toggle="tab">Deskripsi Kendaraan</a>
+								</li>
+								<li role="presentation">
+									<a href="#accessories" aria-controls="accessories" role="tab" data-toggle="tab">Accessories</a>
+								</li>
+							</ul>
+							<div class="tab-content">
+								<div role="tabpanel" class="tab-pane active" id="vehicle-overview">
+									<p><?=$data->deskripsi?></p>
+								</div>
+								<div class="tab-pane" id="accessories" role="tabpanel">
+									<table>
+										<thead>
+											<tr>
+												<th colspan="2">Accessories</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Air Conditioner</td>
+												<td><i class="fa fa-check" aria-hidden="true"></i></td>
+												<td><i class="fa fa-close" aria-hidden="true"></i></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<aside class="col-md-3">
+				<div class="share_vehicle">
+					<p>Share:&nbsp; 
+					<a href="#"><i class="fa fa-facebook-square"></i></a>
+					<a href="#"><i class="fa fa-facebook-square"></i></a>
+					<a href="#"><i class="fa fa-facebook-square"></i></a>
+					<a href="#"><i class="fa fa-facebook-square"></i></a>
+					<a href="#"><i class="fa fa-facebook-square"></i></a>
+					</p>
+				</div>
+				<div class="sidebar_widget">
+					<div class="widget_heading">
+						<h5><i class="fa fa-envelope"></i>Sewa Sekarang</h5>
+					</div>
+					<form action="#" method="get">
+						<input type="hidden" class="form-control" name="id_mobil" value="" required/>
+						<div class="form-group" align="center">
+							<button class="btn">Sewa Sekarang</button>
+						</div>
+					</form>
+				</div>
+				</aside>
+			</div>
+		</div>
+	</section>
+	<?php endforeach ?>
+	<!-- end detail mobil -->
 
 <!--Footer -->
 <?php $this->load->view('home/template/footer')?>

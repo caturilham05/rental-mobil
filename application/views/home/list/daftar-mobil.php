@@ -101,11 +101,11 @@
                         <ul>
                             <li class="gray-bg">
                                 <div class="recent_post_img">
-                                    <a href="#"><img src="<?= base_url('uploads/mobil/'.$data->gambar)?>" alt="image"></a>
+                                    <a href="<?= site_url('detail-mobil/'.$data->nama_mobil)?>"><img src="<?= base_url('uploads/mobil/'.$data->gambar)?>" alt="image"></a>
                                 </div>
                                 <div class="recent_post_title">
-                                <a href="#"><?= $data->merek?>, <?= $data->nama_mobil?></a>
-                                <p class="widget_price">Rp.<?= $data->harga?> / hari</p>
+                                <a href="<?=site_url('detail-mobil/'.$data->id_mobil)?>"><?= $data->merek?>, <?= $data->nama_mobil?></a>
+                                <p class="widget_price">Rp.<?= number_format($data->harga,0,',','.')?> / hari</p>
                                 </div>
                             </li>
                         </ul>
@@ -123,7 +123,7 @@
                     </div>
                     <div class="product-listing-content"></br>
                         <h5><a href="#"><?= $data->merek?>, <?= $data->nama_mobil?></a></h5>
-                        <p class="list-price">Rp.<?= $data->harga?> / Hari</p>
+                        <p class="list-price">Rp.<?= number_format($data->harga,0,',','.')?> / Hari</p>
                         <ul>
                         <li><i class="fa fa-calendar"></i>Tahun <?= $data->tahun?></li>
                         <li><i class="fa fa-car"></i><?= $data->bahanbakar?></li>
