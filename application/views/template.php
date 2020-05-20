@@ -164,6 +164,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </span>
           </a>
         </li>
+        <li <?= $this->uri->segment(1) == 'data%20mitra' ? 'class="active"' : '' ?>>
+          <a href="<?php echo site_url('data%20mitra')?>">
+            <i class="fa fa-user"></i>
+            <span>Mitra</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
         <?php } ?>
       </ul>
     </section>
@@ -179,10 +187,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
+      <b>Beta Version</b> 1.0.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-    reserved.
+    <strong>Copyright &copy; <?= date('Y')?> Rental Mobil. All Rights Reserved.</strong>
   </footer>
 
 

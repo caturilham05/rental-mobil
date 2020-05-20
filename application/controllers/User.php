@@ -7,7 +7,7 @@ class User extends CI_Controller {
     {
         parent::__construct();
         //check_not_login();
-        $this->load->model('user_m');
+        $this->load->model(['user_m', 'mitra_m']);
         $this->load->library('form_validation');
     }
 
@@ -16,6 +16,13 @@ class User extends CI_Controller {
         $data['row'] = $this->user_m->get();
 
 		$this->template->load('template', 'admin/user/user_data', $data);
+    }
+    
+    public function data_mitra()
+	{
+        $data['row'] = $this->mitra_m->get();
+
+		$this->template->load('template', 'admin/mitra/mitra_data', $data);
     }
     
     

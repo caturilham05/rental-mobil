@@ -112,11 +112,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active">
-            <li class="active"><a href="<?= site_url('dashboard-mitra')?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li  <?= $this->uri->segment(1) == 'dashboard-mitra' || $this->uri->segment(1) == '' ? 'class="active"' : '' ?>>
+            <li><a href="<?= site_url('dashboard-mitra')?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         </li>
         <li>
-            <li><a href="<?= site_url('mobil%20mitra')?>"><i class="fa fa-car"></i> Mobil</a></li>
+            <li  <?= $this->uri->segment(1) == 'mobil%20mitra' || $this->uri->segment(1) == '' ? 'class="active"' : '' ?>><a href="<?= site_url('mobil%20mitra')?>"><i class="fa fa-car"></i> Mobil</a></li>
         </li>
       </ul>
     </section>
@@ -129,7 +129,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <section class="content-header">
     <h1>Mobil<small>&nbsp;Input</small></h1>
     <ol class="breadcrumb">
-        <li><a href="<?= site_url('dashboard')?>"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="<?= site_url('dashboard-mitra')?>"><i class="fa fa-dashboard"></i>Home</a></li>
         <li class="active">Tambah Data Mobil</li>
     </ol>
 </section>
@@ -397,7 +397,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
+        <b>Beta Version</b> 1.0.0
     </div>
     <strong>Copyright &copy; <?= date('Y')?> Rental Mobil. All Rights Reserved.</strong>
   </footer>

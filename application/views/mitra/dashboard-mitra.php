@@ -112,10 +112,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active">
-            <li class="active"><a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li <?= $this->uri->segment(1) == 'dashboard-mitra' || $this->uri->segment(1) == '' ? 'class="active"' : '' ?>>
+            <li><a href="<?= site_url('dashboard-mitra')?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         </li>
-        <li>
+        <li <?= $this->uri->segment(1) == 'mobil%20mitra' || $this->uri->segment(1) == '' ? 'class="active"' : '' ?>>
             <li><a href="<?= site_url('mobil%20mitra')?>"><i class="fa fa-car"></i> Mobil</a></li>
         </li>
       </ul>
@@ -132,7 +132,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
+      <b>Beta Version</b> 1.0.0
     </div>
     <strong>Copyright &copy; <?= date('Y')?> Rental Mobil. All Rights Reserved.</strong>
   </footer>

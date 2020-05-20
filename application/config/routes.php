@@ -7,6 +7,8 @@ $route['translate_uri_dashes'] = FALSE;
 
 // login admin
 $route['admin'] = 'auth/login';
+// data mitra dari admin
+$route['data%20mitra'] = 'user/data_mitra';
 
 // Bagian User
 // Menunggu Pembayaran

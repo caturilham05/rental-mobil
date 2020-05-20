@@ -12,7 +12,7 @@
             <li><a href="#">FAQs</a></li>
             <li><a href="#">Privacy</a></li>
           <li><a href="#">Terms of use</a></li>
-          <li><a href="<?= site_url('mitra')?>">Login Mitra</a></li>
+          <li><a href="<?= site_url('mitra')?>">Berminat Menjadi Mitra Kami?</a></li>
           </ul>
         </div>
       </div>
