@@ -3,29 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User_m extends CI_Model{
     public function login($post){
-    //    $arr = array(
-    //        'username' => $post['username'],
-    //        'password' => sha1($post['username'])
-    //    );
-
-    //    $this->db->where($arr);
-    //    $query = $this->db->get('user');
-    //    $resultArray = $query->row_array();
-    //         $this->db->where('user_id', $resultArray['user_id']);
-    //         $this->db->update('user', array('last_login' => time()));
-    //    return $resultArray;
-
-       
-       
         $this->db->select('*');
         $this->db->from('user');
         $this->db->where('username', $post['username']);
         $this->db->where('password', sha1($post['password']));
-        //$array = array('last_login' => time());
-        //$this->db->update('user',$array);
         $query = $this->db->get();
         return $query;
     }
+    
 
     public function get($id = null)
     {
@@ -38,6 +23,19 @@ class User_m extends CI_Model{
         return $query;
     }
     
+    public function add($post)
+    {
+        $params['name'] = $post['name'];
+        $params['username'] = $post['username'];
+        $params['password'] = sha1($post['password']);
+        $params['email'] = $post['email'];
+        $params['gender'] = $post['gender'];
+        $params['telepon'] = $post['telepon'];
+        $params['address'] = $post['address'];
+        $params['level'] = $post['level'];
+        $this->db->insert('user', $params);
+
+    }
     public function edit($post)
     {
         $params['name'] = $post['name'];
@@ -50,6 +48,24 @@ class User_m extends CI_Model{
         $params['level'] = $post['level'];
         $this->db->where('user_id', $post['user_id']);
         $this->db->update('user', $params);
+
+    }
+
+    public function cek_login(){
+        $username = set_value('username');
+        $password = set_value('password');
+
+        $result = $this->db
+                        ->where('username', $username)
+                        ->where('password', sha1($password))
+                        ->limit(1)
+                        ->get('user');
+
+        if($result->num_rows() > 0){
+            return $result->row();
+        }else{
+            return false; 
+        }
 
     }
     

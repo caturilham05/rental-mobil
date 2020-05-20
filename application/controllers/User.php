@@ -6,7 +6,7 @@ class User extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-        check_not_login();
+        //check_not_login();
         $this->load->model('user_m');
         $this->load->library('form_validation');
     }
@@ -18,6 +18,8 @@ class User extends CI_Controller {
 		$this->template->load('template', 'admin/user/user_data', $data);
     }
     
+    
+    
     public function add()
     {
 
@@ -28,6 +30,8 @@ class User extends CI_Controller {
             array('matches' => '%s Tidak Sesuai Dengan Password')
         );
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('gender', 'Gender', 'required');
+        $this->form_validation->set_rules('telepon', 'Telepon', 'required');
         $this->form_validation->set_rules('address', 'Address', 'required');
         $this->form_validation->set_rules('level', 'Level', 'required');
 
@@ -39,7 +43,7 @@ class User extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE)
         {
-                $this->template->load('template','user/user_add');
+                $this->load->view('home/login/user_add');
         }
         else
         {
@@ -49,7 +53,7 @@ class User extends CI_Controller {
             {
                 echo "<script>alert('Data Berhasil Disimpan!');</script>";
             }
-            echo "<script>window.location='".site_url('user')."';</script>";
+            echo "<script>window.location='".site_url('/')."';</script>";
         }
     }
 
@@ -73,6 +77,8 @@ class User extends CI_Controller {
         
         }
         $this->form_validation->set_rules('email', 'Email', 'valid_email');
+        $this->form_validation->set_rules('gender', 'Gender');
+        $this->form_validation->set_rules('telepon', 'telepon');
         $this->form_validation->set_rules('address', 'Address');
         $this->form_validation->set_rules('level', 'Level');
 

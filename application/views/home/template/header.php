@@ -4,8 +4,11 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-3 col-md-2">
-          <div class="logo"> <a href="<?= site_url('/')?>"><img src="<?= base_url('assets/images/logo11.png')?>" alt="image"/></a> </div>
+          <div class="logo"> <a href="<?= site_url('/')?>"><img src="<?= base_url('assets/images/logo11.png')?>" alt="image"/></a></div>
         </div>
+        <?php if($this->session->userdata('name')){?>
+          <small><h6>Hallo, <?php echo ucfirst($this->session->userdata('name'))?>  !</h6></small>
+        <?php } ?>
         <div class="col-sm-9 col-md-10">
           <div class="header_info">
             <div class="header_widgets">
@@ -15,7 +18,7 @@
             <div class="header_widgets">
               <div class="circle_icon"> <i class="fa fa-phone" aria-hidden="true"></i> </div>
               <p class="uppercase_text">For Services Call Us: </p>
-              <a href="tel:61-1234-5678-09">+62-896-4819-7626</a> </div>
+              <a href="+62-896-4819-7626">+62-896-4819-7626</a> </div>
             <!-- <div class="social-follow">
               <ul>
                 <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
@@ -44,10 +47,16 @@
 	        <i class="fa fa-angle-down" aria-hidden="true"></i></a>
           <ul class="dropdown-menu">
            
-            <li><a href="profile.php">Profile Settings</a></li>
-              <li><a href="update-password.php">Update Password</a></li>
-            <li><a href="riwayatsewa.php">Riwayat Sewa</a></li>
-            <li><a href="logout.php">Sign Out</a></li>
+            <!-- <li><a href="profile.php">Profile Settings</a></li>
+              <li><a href="update-password.php">Update Password</a></li> -->
+              <?php if($this->session->userdata('username')): ?>
+              <li><a href="#">Riwayat Sewa</a></li>
+                <?php endif ?>
+            <?php if($this->session->userdata('username')) { ?>
+            <li><a href="<?= site_url('logout')?>">Keluar</a></li>
+            <?php }else{ ?>
+            <li><a href="<?= site_url('login-user')?>">Log In</a></li>
+            <?php } ?>
           </ul>
             </li>
           </ul>
@@ -56,15 +65,16 @@
       <div class="collapse navbar-collapse" id="navigation">
         <ul class="nav navbar-nav">
           <li><a href="<?= site_url('/')?>">Home</a></li>        	 
-          <li><a href="#about">Tentang Kami</a></li>
           <li><a href="<?= site_url('daftar-mobil')?>">Daftar Mobil</a>
-          <li><a href="page.php?type=faqs">FAQs</a></li>
-          <li><a href="contact-us.php">Hubungi Kami</a></li>
+          <?php if($this->session->userdata('username')): ?>
+          <li><a href="<?= site_url('mitra')?>">Mitra</a></li>
+          <?php endif?>
+          <li><a href="#about">Tentang Kami</a></li>
+          <li><a href="#">Hubungi Kami</a></li>
 
         </ul>
       </div>
     </div>
   </nav>
   <!-- Navigation end --> 
-
 </header>

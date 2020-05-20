@@ -91,9 +91,112 @@
 										<tbody>
 											<tr>
 												<td>Air Conditioner</td>
+												<?php if($data->AC == '1'){ ?>
 												<td><i class="fa fa-check" aria-hidden="true"></i></td>
+												<?php }else{ ?>
 												<td><i class="fa fa-close" aria-hidden="true"></i></td>
+												<?php } ?>
 											</tr>
+											
+											<tr>
+												<td>Door Lock</td>
+												<?php if($data->doorlock == '1'){ ?>
+												<td><i class="fa fa-check" aria-hidden="true"></i></td>
+												<?php }else{ ?>
+												<td><i class="fa fa-close" aria-hidden="true"></i></td>
+												<?php } ?>
+											</tr>
+											
+											<tr>
+												<td>AntiLock Braking System</td>
+												<?php if($data->antilockbrakingsystem == '1'){ ?>
+												<td><i class="fa fa-check" aria-hidden="true"></i></td>
+												<?php }else{ ?>
+												<td><i class="fa fa-close" aria-hidden="true"></i></td>
+												<?php } ?>
+											</tr>
+											
+											<tr>
+												<td>Brake Assist</td>
+												<?php if($data->brakeassist == '1'){ ?>
+												<td><i class="fa fa-check" aria-hidden="true"></i></td>
+												<?php }else{ ?>
+												<td><i class="fa fa-close" aria-hidden="true"></i></td>
+												<?php } ?>
+											</tr>
+											
+											<tr>
+												<td>Power Steering</td>
+												<?php if($data->powersteering == '1'){ ?>
+												<td><i class="fa fa-check" aria-hidden="true"></i></td>
+												<?php }else{ ?>
+												<td><i class="fa fa-close" aria-hidden="true"></i></td>
+												<?php } ?>
+											</tr>
+											
+											<tr>
+												<td>Drive Airbag</td>
+												<?php if($data->driveairbag == '1'){ ?>
+												<td><i class="fa fa-check" aria-hidden="true"></i></td>
+												<?php }else{ ?>
+												<td><i class="fa fa-close" aria-hidden="true"></i></td>
+												<?php } ?>
+											</tr>
+											
+											<tr>
+												<td>Passenger Airbag</td>
+												<?php if($data->passengerairbag == '1'){ ?>
+												<td><i class="fa fa-check" aria-hidden="true"></i></td>
+												<?php }else{ ?>
+												<td><i class="fa fa-close" aria-hidden="true"></i></td>
+												<?php } ?>
+											</tr>
+											
+											<tr>
+												<td>Power Windows</td>
+												<?php if($data->powerwindows == '1'){ ?>
+												<td><i class="fa fa-check" aria-hidden="true"></i></td>
+												<?php }else{ ?>
+												<td><i class="fa fa-close" aria-hidden="true"></i></td>
+												<?php } ?>
+											</tr>
+											
+											<tr>
+												<td>CD Player</td>
+												<?php if($data->cdplayer == '1'){ ?>
+												<td><i class="fa fa-check" aria-hidden="true"></i></td>
+												<?php }else{ ?>
+												<td><i class="fa fa-close" aria-hidden="true"></i></td>
+												<?php } ?>
+											</tr>
+											
+											<tr>
+												<td>Central Locking</td>
+												<?php if($data->centrallocking == '1'){ ?>
+												<td><i class="fa fa-check" aria-hidden="true"></i></td>
+												<?php }else{ ?>
+												<td><i class="fa fa-close" aria-hidden="true"></i></td>
+												<?php } ?>
+											</tr>
+											
+											<tr>
+												<td>Crash Sensor</td>
+												<?php if($data->crashsensor == '1'){ ?>
+												<td><i class="fa fa-check" aria-hidden="true"></i></td>
+												<?php }else{ ?>
+												<td><i class="fa fa-close" aria-hidden="true"></i></td>
+												<?php } ?>
+											</tr>
+											
+											<tr>
+												<td>Leather Seats</td>
+												<?php if($data->leatherseats == '1'){ ?>
+												<td><i class="fa fa-check" aria-hidden="true"></i></td>
+												<?php }else{ ?>
+												<td><i class="fa fa-close" aria-hidden="true"></i></td>
+												<?php } ?>
+											</tr>
+											
 										</tbody>
 									</table>
 								</div>
@@ -106,20 +209,23 @@
 				<div class="share_vehicle">
 					<p>Share:&nbsp; 
 					<a href="#"><i class="fa fa-facebook-square"></i></a>
-					<a href="#"><i class="fa fa-facebook-square"></i></a>
-					<a href="#"><i class="fa fa-facebook-square"></i></a>
-					<a href="#"><i class="fa fa-facebook-square"></i></a>
-					<a href="#"><i class="fa fa-facebook-square"></i></a>
+					<a href="#"><i class="fa fa-twitter-square"></i></a>
+					<a href="#"><i class="fa fa-instagram"></i></a>
+					<a href="#"><i class="fa fa-whatsapp"></i></a>
 					</p>
 				</div>
 				<div class="sidebar_widget">
 					<div class="widget_heading">
 						<h5><i class="fa fa-envelope"></i>Sewa Sekarang</h5>
 					</div>
-					<form action="#" method="get">
-						<input type="hidden" class="form-control" name="id_mobil" value="" required/>
+					<form action="<?= site_url('booking/sewa/mobil/kode'.$data->id_mobil)?>" method="get">
+						<input type="hidden" class="form-control" name="nama_mobil" value="<?= $data->nama_mobil?>" required/>
 						<div class="form-group" align="center">
+							<?php if($this->session->userdata('username')) { ?>
 							<button class="btn">Sewa Sekarang</button>
+							<?php }else{?>
+							<a href="<?= site_url('login-user')?>" class="btn">Login</a>
+							<?php }?>
 						</div>
 					</form>
 				</div>

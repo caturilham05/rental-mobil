@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Rental Mobil || Admin</title>
+  <title>Rental Mobil || Mitra</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -33,33 +33,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="<?php echo base_url()?>assets/index2.html"><b>Admin</b>Masuk</a>
+        <p><b>Masuk</b><small>Mitra</small></p>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Silahkan Masuk</p>
 
-    <form action="<?php echo site_url('auth/proses')?>" method="post">
+    <form action="<?php echo site_url('mitra')?>" method="post">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" name="username" placeholder="username" require/>
+        <input type="text" class="form-control" name="username_mitra" placeholder="Username"/>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        <?= form_error('username_mitra')?>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" name="password" placeholder="Password" require/>
+        <input type="password" class="form-control" name="password_mitra" placeholder="Password"/>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <?= form_error('password_mitra')?>
       </div>
+        <button type="submit" class="btn btn-primary btn-block">Masuk</button></br>
       <div class="row">
-        <div class="col-xs-8">
+        <div class="col-xs-6">
           <div class="checkbox icheck">
             <label>
               <input type="checkbox"> Ingat Saya?
             </label>
           </div>
         </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" name="login" class="btn btn-primary btn-block btn-flat">Masuk</button>
+        <div class="col-xs-6">
+            <a href="<?= site_url('register-mitra')?>" class="btn btn-danger btn-block ">Daftar</a>
         </div>
+        <!-- /.col -->
         <!-- /.col -->
       </div>
     </form>

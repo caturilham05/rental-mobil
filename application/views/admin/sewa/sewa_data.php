@@ -12,10 +12,6 @@
     <div class="box">
         <div class="box-header">
             <h3 class="box-title"><b>Data</b>&nbsp;Sewa</h3>
-            <div class="pull-right">
-                <a href="<?= site_url('sewa/add')?>" class="btn btn-primary btn-flat"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Add Sewa</a> 
-                <!-- (pelanggan/add) dari routes -->
-            </div>
         </div>
         <div class="box-body table-responsive">
             <table class="table table-bordered table-striped text-center" id="example1">

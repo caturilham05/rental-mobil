@@ -52,10 +52,6 @@ class Mobil_m extends CI_Model {
             'tahun' => $post['tahun'],
             'deskripsi' => $post['deskripsi'],
             'gambar' => $post['gambar'],
-            'gambar2' => $post['gambar2'],
-            'gambar3' => $post['gambar3'],
-            'gambar4' => $post['gambar4'],
-            'gambar5' => $post['gambar5'],
             'AC' => $post['AC'],
             'doorlock' => $post['doorlock'],
             'antilockbrakingsystem' => $post['antilockbrakingsystem'],
@@ -94,12 +90,8 @@ class Mobil_m extends CI_Model {
             'crashsensor' => $post['crashsensor'],
             'leatherseats' => $post['leatherseats']
         ];
-        if($post(['gambar', 'gambar2', 'gambar3', 'gambar4', 'gambar5']) != null){
+        if($post['gambar'] != null){
             $params['gambar'] = $post['gambar'];
-            // $params['gambar2'] = $post['gambar2'];
-            // $params['gambar3'] = $post['gambar3'];
-            // $params['gambar4'] = $post['gambar4'];
-            // $params['gambar5'] = $post['gambar5'];
         }
         $this->db->where('id_mobil', $post['id_mobil']);
         $this->db->update('mobil', $params);
@@ -107,6 +99,12 @@ class Mobil_m extends CI_Model {
 
 
     public function del($id)
+    {
+        $this->db->where('id_mobil', $id);
+        $this->db->delete('mobil');
+    }
+   
+    public function del_mobil($id)
     {
         $this->db->where('id_mobil', $id);
         $this->db->delete('mobil');

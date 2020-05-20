@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" href="<?= base_url('assets/images/favicon-icon/favicon.png')?>">
-  <title>Rental Mobil || Admin</title>
+  <title>Rental Mobil || Mitra</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -46,14 +46,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
+
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo base_url('dashboard')?>" class="logo">
+    <a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>Admin</b></span>
+      <span class="logo-mini"><b>Mitra</b></span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Rental</b>Mobil</span>
     </a>
@@ -66,32 +67,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?php echo base_url()?>assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo ucfirst($this->fungsi->user_login()->name)?></span>
+              <img src="<?= base_url()?>assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <span class="hidden-xs"><?= ucfirst($this->session->userdata('name_mitra'))?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php echo base_url()?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="<?= base_url()?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                <?php echo ucfirst($this->fungsi->user_login()->name)?>
-                  <small><?php echo ucfirst($this->fungsi->user_login()->level)?></small>
+                <?= ucfirst($this->session->userdata('name_mitra'))?>
+                  <small><?= ucfirst($this->session->userdata('level_mitra'))?></small>
                 </p>
               </li>
               <!-- Menu Body -->
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-right">
-                  <a href="<?php echo site_url('auth/logout')?>" class="btn btn-default">Sign out</a>
+                  <a href="<?= site_url('logout-mitra')?>" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
           </li>
-          <!-- Control Sidebar Toggle Button -->
         </ul>
       </div>
     </nav>
@@ -103,68 +102,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?php echo base_url()?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="<?= base_url()?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p><?php echo ucfirst($this->fungsi->user_login()->name)?></p>
+          <p><?= ucfirst($this->session->userdata('name_mitra'))?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li <?= $this->uri->segment(1) == 'dashboard' || $this->uri->segment(1) == '' ? 'class="active"' : '' ?>>
-          <a href="<?php echo site_url('dashboard')?>">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-            <span class="pull-right-container">
-            </span>
-          </a>
+        <li class="active">
+            <li class="active"><a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         </li>
-        <?php if($this->session->userdata('level') == 'admin'): ?>
-        <li class="treeview <?= $this->uri->segment(1) == 'sewa' || $this->uri->segment(1) == 'menunggu%20pembayaran' || $this->uri->segment(1) == 'menunggu%20konfirmasi' || $this->uri->segment(1) == 'pengembalian'  ? 'active'  : '' ?>">
-          <a href="#">
-            <i class="fa fa-th-list"></i>
-            <span>Sewa Mobil</span>
-            <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li <?= $this->uri->segment(1) == 'menunggu%20pembayaran' ? 'class="active"' : '' ?>><a href="<?php echo site_url('menunggu%20pembayaran')?>"><i class="fa fa-circle-o"></i>Menunggu Pembayaran</a></li>
-            <li <?= $this->uri->segment(1) == 'menunggu%20konfirmasi' ? 'class="active"' : '' ?>><a href="<?php echo site_url('menunggu%20konfirmasi')?>"><i class="fa fa-circle-o"></i>Menunggu Konfirmasi</a></li>
-            <li <?= $this->uri->segment(1) == 'pembayaran_v' ? 'class="active"' : '' ?>><a href="<?php echo site_url('pembayaran_v')?>"><i class="fa fa-circle-o"></i>Data Pembayaran</a></li>
-            <li <?= $this->uri->segment(1) == 'pengembalian' ? 'class="active"' : '' ?>><a href="<?php echo site_url('pengembalian')?>"><i class="fa fa-circle-o"></i>Data Pengembalian Mobil</a></li>
-            <li <?= $this->uri->segment(1) == 'sewa' ? 'class="active"' : '' ?>><a href="<?php echo site_url('sewa')?>"><i class="fa fa-circle-o"></i>Data Sewa</a></li>
-          </ul>
+        <li>
+            <li><a href="<?= site_url('mobil%20mitra')?>"><i class="fa fa-car"></i> Mobil</a></li>
         </li>
-        <?php endif ?>
-        <li <?= $this->uri->segment(1) == 'mobil' || $this->uri->segment(1) == '' ? 'class="active"' : '' ?>>
-          <a href="<?php echo site_url('mobil')?>">
-            <i class="fa fa-car"></i> <span>Mobil</span>
-            <span class="pull-right-container">
-            </span>
-          </a>
-        </li>
-        <?php if($this->session->userdata('level') == 'admin'): ?>
-        <li <?= $this->uri->segment(1) == 'driver' || $this->uri->segment(1) == '' ? 'class="active"' : '' ?>>
-          <a href="<?php echo site_url('driver')?>">
-            <i class="fa fa-money"></i> <span>Biaya Driver</span>
-            <span class="pull-right-container">
-            </span>
-          </a>
-        </li>
-        <?php endif ?>
-        <?php if($this->fungsi->user_login()->level == 'admin') { ?>
-        <li class="header">SETTINGS</li>
-        <li <?= $this->uri->segment(1) == 'user' ? 'class="active"' : '' ?>>
-          <a href="<?php echo site_url('user')?>">
-            <i class="fa fa-user"></i>
-            <span>Users</span>
-            <span class="pull-right-container">
-            </span>
-          </a>
-        </li>
-        <?php } ?>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -173,7 +126,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <?php echo $contents ?>
+    <?php $this->load->view('mitra/content')?>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -181,16 +134,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-    reserved.
+    <strong>Copyright &copy; <?= date('Y')?> Rental Mobil. All Rights Reserved.</strong>
   </footer>
 
-
+  <!-- Control Sidebar -->
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery 3 -->
 <script src="<?php echo base_url()?>assets/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="<?php echo base_url()?>assets/bower_components/jquery-ui/jquery-ui.min.js"></script>

@@ -6,7 +6,7 @@ class Mobil extends CI_Controller {
 	function __construct()
     {
         parent::__construct();
-        check_not_login();
+        //check_not_login();
         //check_admin();
 		$this->load->model('mobil_m');
 		$this->load->library('form_validation');
@@ -17,6 +17,12 @@ class Mobil extends CI_Controller {
 	{
 		$data['row'] = $this->mobil_m->get();
 		$this->template->load('template', 'admin/mobil/mobil_data', $data);
+	}
+	
+	public function view_mobil()
+	{
+		$data['row'] = $this->mobil_m->get();
+		$this->load->view('mitra/mobil/mobil_data', $data);
 	}
 	
 	public function add(){
@@ -47,7 +53,7 @@ class Mobil extends CI_Controller {
 			'row' => $mobil
 		); 
 		
-		$this->template->load('template', 'admin/mobil/mobil_form', $data);
+		$this->load->view('mitra/mobil/mobil_form', $data);
 
 	}
 
@@ -59,10 +65,10 @@ class Mobil extends CI_Controller {
 				'page' => 'edit',
 				'row' => $mobil
 			); 
-			$this->template->load('template', 'admin/mobil/mobil_form', $data);
+		$this->load->view('mitra/mobil/mobil_form', $data);
 		}else{
 			echo "<script>alert('Data Tidak Ditemukan!');";
-			echo "window.location='".site_url('mobil')."';</script>";
+			echo "window.location='".site_url('mobil%20mitra')."';</script>";
 		}
 	}
 
@@ -83,7 +89,7 @@ class Mobil extends CI_Controller {
 						if($this->db->affected_rows() == 1){
 							$this->session->set_flashdata('success', 'Data Berhasil Disimpan!');
 						}
-						 echo "<script>window.location='".site_url('mobil')."';</script>";
+						 echo "<script>window.location='".site_url('mobil%20mitra')."';</script>";
 					}else{
 						$err = $this->upload->display_errors();
 						$this->session->set_flashdata('err', $err);
@@ -95,7 +101,7 @@ class Mobil extends CI_Controller {
 					if($this->db->affected_rows() == 1){
 						$this->session->set_flashdata('success', 'Data Berhasil Disimpan!');
 					}
-					echo "<script>window.location='".site_url('mobil')."';</script>";
+					echo "<script>window.location='".site_url('mobil%20mitra')."';</script>";
 				}
 		}else if(isset($_POST['edit'])){
 				if(@$_FILES['gambar']['name'] != null){
@@ -111,7 +117,7 @@ class Mobil extends CI_Controller {
 						if($this->db->affected_rows() == 1){
 							$this->session->set_flashdata('success', 'Data Berhasil Disimpan!');
 						}
-						echo "<script>window.location='".site_url('mobil')."';</script>";
+						echo "<script>window.location='".site_url('mobil%20mitra')."';</script>";
 					}else{
 						$err = $this->upload->display_errors();
 						$this->session->set_flashdata('err', $err);
@@ -123,17 +129,25 @@ class Mobil extends CI_Controller {
 					if($this->db->affected_rows() == 1){
 						$this->session->set_flashdata('success', 'Data Berhasil Disimpan!');
 					}
-					echo "<script>window.location='".site_url('mobil')."';</script>";
+					echo "<script>window.location='".site_url('mobil%20mitra')."';</script>";
 				}
 			}
 		if($this->db->affected_rows() == 1){
 			$this->session->set_flashdata('success', 'Data Berhasil Disimpan!');
 		}
-		echo "<script>window.location='".site_url('mobil')."';</script>";
+		echo "<script>window.location='".site_url('mobil%20mitra')."';</script>";
 	}
 
 	public function del($id){
 		$this->mobil_m->del($id);
+		if($this->db->affected_rows() == 1){
+            $this->session->set_flashdata('success', 'Data Berhasil Dihapus!');
+		}
+		echo "<script>window.location='".site_url('mobil%20mitra')."';</script>";
+	}
+	
+	public function del_mobil($id){
+		$this->mobil_m->del_mobil($id);
 		if($this->db->affected_rows() == 1){
             $this->session->set_flashdata('success', 'Data Berhasil Dihapus!');
 		}

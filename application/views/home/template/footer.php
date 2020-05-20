@@ -8,10 +8,11 @@
           <ul>
 
         
-          <li><a href="page.php?type=aboutus">Tentang Kami</a></li>
-            <li><a href="page.php?type=faqs">FAQs</a></li>
-            <li><a href="page.php?type=privacy">Privacy</a></li>
-          <li><a href="page.php?type=terms">Terms of use</a></li>
+          <li><a href="#">Tentang Kami</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms of use</a></li>
+          <li><a href="<?= site_url('mitra')?>">Login Mitra</a></li>
           </ul>
         </div>
       </div>

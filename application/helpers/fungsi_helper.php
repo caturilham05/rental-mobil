@@ -20,7 +20,8 @@
             redirect('auth/login');
         }
     }
-
+    
+    
     function check_admin(){
         $ci =& get_instance();
         $ci->load->library('fungsi');

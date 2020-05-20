@@ -6,7 +6,7 @@ class Sewa extends CI_Controller {
 	function __construct()
     {
         parent::__construct();
-        check_not_login();
+        //check_not_login();
         //check_admin();
 		$this->load->model(['sewa_m', 'mobil_m', 'simpel_sewa', 'driver_m']);
 		$this->load->library('form_validation');

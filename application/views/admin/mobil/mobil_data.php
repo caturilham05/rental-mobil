@@ -12,10 +12,6 @@
     <div class="box">
         <div class="box-header">
             <h3 class="box-title"><b>Data</b>&nbsp;Mobil</h3>
-            <div class="pull-right">
-            <a href="<?= site_url('mobil/add')?>" class="btn btn-primary btn-flat"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Tambah Data Mobil</a> 
-            <!-- (pelanggan/add) dari routes -->
-            </div>
         </div>
         <div class="box-body table-responsive">
             <table class="table table-bordered table-striped text-center" id="example1">
@@ -52,8 +48,7 @@
                             <?php endif; ?>
                         </td>
                         <td>
-                        <a href="<?= site_url('mobil/edit/'.$data->id_mobil)?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i>&nbsp;Edit</a>
-                        <a href="<?= site_url('mobil/del/'.$data->id_mobil)?>" onclick="return confirm('Apakah Anda Yakin ?')" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>&nbsp;Delete</a>
+                        <a href="<?= site_url('mobil/del_mobil/'.$data->id_mobil)?>" onclick="return confirm('Apakah Anda Yakin ?')" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>&nbsp;Delete</a>
                         </td>
                     </tr>
                     <?php } ?>

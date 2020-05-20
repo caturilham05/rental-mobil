@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Rental Mobil || Admin</title>
+  <title>Rental Mobil || Mitra</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -33,32 +33,48 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="<?php echo base_url()?>assets/index2.html"><b>Admin</b>Masuk</a>
+  <p><b>Pendaftaran</b><small>Mitra</small> </p>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Silahkan Masuk</p>
+    <h3 class="login-box-msg">Silahkan Resgistrasi</h3>
 
-    <form action="<?php echo site_url('auth/proses')?>" method="post">
-      <div class="form-group has-feedback">
-        <input type="text" class="form-control" name="username" placeholder="username" require/>
+    <form action="" method="post">
+      <div class="form-group has-feedback  <?= form_error('name_mitra') ? 'has-error' : null?>">
+        <input type="text" class="form-control" name="name_mitra" placeholder="Nama Lengkap"/>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        <?= form_error('name_mitra')?>
       </div>
-      <div class="form-group has-feedback">
-        <input type="password" class="form-control" name="password" placeholder="Password" require/>
+      
+      <div class="form-group has-feedback  <?= form_error('username_mitra') ? 'has-error' : null?>">
+        <input type="text" class="form-control" name="username_mitra" placeholder="Nama Pengguna"/>
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        <?= form_error('username_mitra')?>
+      </div>
+      
+      <div class="form-group has-feedback  <?= form_error('password_mitra') ? 'has-error' : null?>">
+        <input type="password" class="form-control" name="password_mitra" placeholder="Kata Sandi"/>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <?= form_error('password_mitra')?>
       </div>
+     
+      <div class="form-group has-feedback  <?= form_error('passconf') ? 'has-error' : null?>">
+        <input type="password" class="form-control" name="passconf" placeholder="Konfirmasi Kata Sandi"/>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <?= form_error('passconf')?>
+      </div>
+
+      <div class="form-group has-feedback  <?= form_error('email_mitra') ? 'has-error' : null?>">
+        <input type="text" class="form-control" name="email_mitra" placeholder="Email"/>
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <?= form_error('email_mitra')?>
+        <input type="hidden" class="form-control" name="level_mitra" value="mitra"/>
+      </div></br></br>
+      
       <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> Ingat Saya?
-            </label>
-          </div>
-        </div>
         <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" name="login" class="btn btn-primary btn-block btn-flat">Masuk</button>
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Daftar Sekarang</button>
         </div>
         <!-- /.col -->
       </div>
