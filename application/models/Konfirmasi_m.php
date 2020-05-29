@@ -8,10 +8,12 @@ class Konfirmasi_m extends CI_Model {
         sewa_mobil.kode_sewa as sewa_kode_sewa,
         sewa_mobil.tgl_sewa as sewa_tgl_sewa,
         sewa_mobil.tgl_kembali as sewa_tgl_kembali,
+        biaya.driver as biaya_driver,
         mobil.nama_mobil as mobil_nama_mobil');
         $this->db->from('detail_sewa_mobil');
         $this->db->join('sewa_mobil', 'sewa_mobil.id_sewa = detail_sewa_mobil.id_sewa');
         $this->db->join('mobil', 'mobil.id_mobil = detail_sewa_mobil.id_mobil');
+        $this->db->join('biaya', 'biaya.id_biaya = detail_sewa_mobil.id_biaya');
         $this->db->where('detail_sewa_mobil.status = "menunggu konfirmasi"');
         //$this->db->from('detail_sewa_mobil');
         if($id != null)

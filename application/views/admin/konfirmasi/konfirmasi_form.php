@@ -62,8 +62,18 @@
                     </div>
                     
                     <div class="form-group">
+                        <label>Driver</label>
+                        <input type="text" name="biaya_driver" value="Rp.<?=number_format($row->biaya_driver,0,',','.')?>"class="form-control" readonly/>
+                    </div>
+                    
+                    <div class="form-group">
                         <label>Harga</label>
-                        <input type="text" name="harga" value="<?=$row->harga?>"class="form-control" readonly/>
+                        <input type="text" name="harga" value="Rp.<?=number_format($row->harga,0,',','.')?>"class="form-control" readonly/>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Total</label>
+                        <input type="text" name="harga" value="Rp.<?=number_format($row->biaya_driver+$row->harga,0,',','.')?>"class="form-control" readonly/>
                     </div>
                     
                     

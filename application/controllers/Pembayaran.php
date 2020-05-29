@@ -8,7 +8,7 @@ class Pembayaran extends CI_Controller {
         parent::__construct();
         //check_not_login();
         //check_admin();
-		$this->load->model(['pembayaran_m', 'mobil_m']);
+		$this->load->model(['sewa_m', 'mobil_m', 'simpel_sewa', 'driver_m', 'user_m', 'pembayaran_m']);
 		$this->load->library('form_validation');
     }
 
@@ -17,6 +17,12 @@ class Pembayaran extends CI_Controller {
 	{
 		$data['row'] = $this->pembayaran_m->get();
 		$this->template->load('template', 'admin/pembayaran/pembayaran_data', $data);
+	}
+	
+	public function riwayat_sewa()
+	{
+		// $data['row'] = $this->pembayaran_m->get_riwayat($name);
+		$this->load->view('home/riwayat/riwayat_sewa');
 	}
 	
 	public function add(){

@@ -8,7 +8,7 @@ class Sewa extends CI_Controller {
         parent::__construct();
         //check_not_login();
         //check_admin();
-		$this->load->model(['sewa_m', 'mobil_m', 'simpel_sewa', 'driver_m']);
+		$this->load->model(['sewa_m', 'mobil_m', 'simpel_sewa', 'driver_m', 'user_m']);
 		$this->load->library('form_validation');
     }
 
@@ -18,37 +18,15 @@ class Sewa extends CI_Controller {
 		$data['row'] = $this->sewa_m->get();
 		$this->template->load('template', 'admin/sewa/sewa_data', $data);
 	}
-
-	// public function add(){
-	// 	$this->db->set('kode_sewa', 'UUID()', FALSE);
-	// 	$query_mobil = $this->mobil_m->get();
-	// 	$sewa_mobil = array (
-	// 		'mobil' => $query_mobil,
-	// 		'tgl_sewa' => $this->input->post('tgl_sewa'),
-	// 		'tgl_kembali' => $this->input->post('tgl_kembali')
-	// 	);
-	// 	$detail_sewa_mobil = array(
-	// 		'lokasi' => $this->input->post('lokasi'),
-	// 		'waktu_pengambilan' => $this->input->post('waktu_pengambilan'),
-	// 		'email' => $this->input->post('email'),
-	// 		'telepon' => $this->input->post('telepon'),
-	// 		'durasi_sewa' => $this->input->post('durasi_sewa'),
-	// 		'harga' => $this->input->post('harga'),
-	// 		'status' => $this->input->post('status'),
-	// 	);
-	// 	$this->sewa_m->add($sewa_mobil, $detail_sewa_mobil);
-
-	// 	$this->template->load('template', 'admin/sewa/sewa_form');
-	// }
 	
 	public function add(){
 		$sewa = new stdClass();
 		$sewa->id_sewa = null;
 		$sewa->id_detail_sewa = null;
 		$sewa->id_mobil = null;
-		//$sewa->id_driver = null;
+		$sewa->id_biaya = null;
 
-		$query_driver = $this->driver_m->get();
+		$query_driver = $this->driver_m->getAll();
 		$query_mobil = $this->mobil_m->get();
 		$query_sewa = $this->simpel_sewa->get();
 		
@@ -67,7 +45,7 @@ class Sewa extends CI_Controller {
 			'page' => 'add',
 			'mobil' => $query_mobil,
 			'simpel' => $query_sewa,
-			'driver' => $query_driver,
+			'biaya' => $query_driver,
 			'row' => $sewa
 		); 
 		

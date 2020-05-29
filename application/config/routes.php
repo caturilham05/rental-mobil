@@ -9,6 +9,10 @@ $route['translate_uri_dashes'] = FALSE;
 $route['admin'] = 'auth/login';
 // data mitra dari admin
 $route['data%20mitra'] = 'user/data_mitra';
+// biaya
+$route['biaya'] = 'driver';
+// biaya edit
+$route['edit%20biaya/(:num)'] = 'driver/edit/$1';
 
 // Bagian User
 // Menunggu Pembayaran
@@ -21,6 +25,8 @@ $route['daftar-mobil'] = 'daftarmobil';
 $route['detail-mobil/(:num)'] = 'daftarmobil/detail/$1';
 // booking mobil
 $route['booking/sewa/mobil/kode(:num)'] = 'booking/sewa/$1';
+// riwayat sewa
+$route['riwayat%20sewa'] = 'pembayaran/riwayat_sewa';
 
 
 

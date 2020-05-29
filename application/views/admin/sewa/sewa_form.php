@@ -38,16 +38,6 @@
                         <label for="tgl_kembali">Tanggal Kembali</label>
                         <input type="date" name="tgl_kembali" class="form-control" required/>
                     </div>
-
-                    <div class="form-group">
-                        <label for="mobil">Mobil</label>
-                            <select name="mobil" class="form-control" required/>
-                                <option value="">- Pilih Mobil -</option>
-                                <?php foreach($mobil->result() as $key => $data) { ?>
-                                <option value="<?=$data->id_mobil?>"><?=$data->nama_mobil?></option>
-                                <?php } ?>
-                            </select>
-                    </div>
                     
                     <div class="form-group">
                         <label for="lokasi">Lokasi</label>
@@ -91,6 +81,18 @@
                             
                         </select>
                     </div>
+
+                    <div class="form-group">
+                        <label for="biaya">Driver / Tidak</label>
+                            <select name="biaya" class="form-control" required/>
+                                <option value="">- Driver / Tidak -</option>
+                                <?php foreach($biaya->result() as $key => $data) { ?>
+                                <option value="<?=$data->id_biaya?>">
+                                <?=$data->keterangan?></option>
+                                <?php } ?>
+                            </select>
+                    </div>
+                    
                     
                     <div class="form-group">
                         <label>Harga</label>

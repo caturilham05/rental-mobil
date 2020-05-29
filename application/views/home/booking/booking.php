@@ -41,30 +41,14 @@
 	<!-- booking -->
 	<section class="user_profile inner_pages">
 		<div class="container">
-			<?php foreach($row->result() as $proses => $data): ?>
-			<div class="col-md-6 col-sm-8">
-				<div class="product-listing-img">
-					<img src="<?= base_url('uploads/mobil/'.$data->gambar)?>" class="img-responsive" alt="Image">
-				</div>
-				<div class="product-listing-content">
-					<h5><?= $data->merek?> , <?= $data->nama_mobil?></h5>
-					<p class="list-price">Rp. <?= number_format($data->harga,0,',','.')?> / Hari</p>
-					<ul>
-						<li><i class="fa fa-calendar"></i><?= $data->tahun?></li>
-						<li><i class="fa fa-cogs"></i><?= $data->bahanbakar?></li>
-					</ul>
-				</div>
-			</div>
-			<?php endforeach ?>
-
-
 			<div class="user_profile_info">
 				<div class="col-md-12 col-sm-10">
-					<form action="#" method="post" name="" onSubmit="return valid();">
-						<!-- <input type="hidden" name="id_mobil" value="" class="form-control" required/> -->
+					<?php foreach($row->result() as $detail => $data): ?>
+					<form action="<?= site_url('booking/proses')?>" method="post">
 						<div class="form-group">
-							<label for="tgl_sewa">Tanggal Sewa</label>
-							<input type="hidden" name="mobil" value="" class="form-control" required/>
+						<label for="tgl_sewa">Tanggal Sewa</label>
+							<input type="hidden" name="mobil" value="<?= $data->id_mobil?>" class="form-control" required/>
+							<input type="hidden" name="name" value="<?= $this->session->userdata('name')?>" class="form-control" required/>
 							<input type="date" name="tgl_sewa" value="" class="form-control" required/>
 						</div>
 
@@ -112,22 +96,35 @@
 									<option value="2 hari">- 2 Hari -</option>
 									<option value="lebih 3 hari">- Lebih 3 Hari -</option>
 								</select>
-                    	</div>
+                    	</div>						
+                    
+						<div class="form-group">
+                        <label for="biaya">Driver / Tidak</label>
+                            <select name="biaya" class="form-control" required/>
+                                <option value="">- Driver / Tidak -</option>
+                                <?php foreach($driver->result()  as $biaya => $denda) { ?>
+                                <option value="<?=$denda->id_biaya?>">
+                                <?=$denda->keterangan?></option>
+                                <?php } ?>
+                            </select>
+						</div>
+					
 						
 						<div class="form-group">
-                        	<label>Harga</label>
-							<input type="text" name="harga" value="<?= number_format($data->harga,0,',','.')?>" class="form-control" disabled/>
+                        	<label for="harga">Harga</label>
+							<input type="text" name="harga" value="<?=$data->harga?>" class="form-control" readonly/>
 						</div>
 
 						<div class="form-group">
-							<label>Status</label>
-							<input type="text" name="status" value="menunggu pembayaran" class="form-control" disabled/>
+							<label for="status">Status</label>
+							<input type="text" name="status" value="menunggu pembayaran" class="form-control" readonly/>
 						</div></br>
 
 						<div class="form-group">
                         <button type="submit" name="add" class="btn btn-success "><i class="fa fa-send"></i>&nbsp;Sewa Sekarang</button>
                     </div>
 					</form>
+					<?php endforeach ?>
 				</div>
 			</div>
 		</div>

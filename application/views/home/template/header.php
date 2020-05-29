@@ -50,7 +50,7 @@
             <!-- <li><a href="profile.php">Profile Settings</a></li>
               <li><a href="update-password.php">Update Password</a></li> -->
               <?php if($this->session->userdata('username')): ?>
-              <li><a href="#">Riwayat Sewa</a></li>
+              <li><a href="<?= site_url('riwayat%20sewa')?>">Riwayat Sewa</a></li>
                 <?php endif ?>
             <?php if($this->session->userdata('username')) { ?>
             <li><a href="<?= site_url('logout')?>">Keluar</a></li>

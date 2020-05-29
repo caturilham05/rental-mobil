@@ -132,7 +132,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <ul class="treeview-menu">
             <li <?= $this->uri->segment(1) == 'menunggu%20pembayaran' ? 'class="active"' : '' ?>><a href="<?php echo site_url('menunggu%20pembayaran')?>"><i class="fa fa-circle-o"></i>Menunggu Pembayaran</a></li>
             <li <?= $this->uri->segment(1) == 'menunggu%20konfirmasi' ? 'class="active"' : '' ?>><a href="<?php echo site_url('menunggu%20konfirmasi')?>"><i class="fa fa-circle-o"></i>Menunggu Konfirmasi</a></li>
-            <li <?= $this->uri->segment(1) == 'pembayaran_v' ? 'class="active"' : '' ?>><a href="<?php echo site_url('pembayaran_v')?>"><i class="fa fa-circle-o"></i>Data Pembayaran</a></li>
             <li <?= $this->uri->segment(1) == 'pengembalian' ? 'class="active"' : '' ?>><a href="<?php echo site_url('pengembalian')?>"><i class="fa fa-circle-o"></i>Data Pengembalian Mobil</a></li>
             <li <?= $this->uri->segment(1) == 'sewa' ? 'class="active"' : '' ?>><a href="<?php echo site_url('sewa')?>"><i class="fa fa-circle-o"></i>Data Sewa</a></li>
           </ul>
@@ -146,9 +145,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </a>
         </li>
         <?php if($this->session->userdata('level') == 'admin'): ?>
-        <li <?= $this->uri->segment(1) == 'driver' || $this->uri->segment(1) == '' ? 'class="active"' : '' ?>>
-          <a href="<?php echo site_url('driver')?>">
-            <i class="fa fa-money"></i> <span>Biaya Driver</span>
+        <li <?= $this->uri->segment(1) == 'biaya' || $this->uri->segment(1) == '' ? 'class="active"' : '' ?>>
+          <a href="<?php echo site_url('biaya')?>">
+            <i class="fa fa-money"></i> <span>Data Biaya</span>
             <span class="pull-right-container">
             </span>
           </a>

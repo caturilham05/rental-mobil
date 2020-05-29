@@ -19,6 +19,7 @@
                     <tr>
                         <th>No.</th>
                         <th>Kode Sewa</th>
+                        <th>Penyewa</th>
                         <th>Tanggal Sewa</th>
                         <th>Tanggal Kembali</th>
                         <th>Lokasi</th>
@@ -26,6 +27,8 @@
                         <th>Email</th>
                         <th>Telepon</th>
                         <th>Durasi Sewa</th>
+                        <th>Driver</th>
+                        <th>Harga</th>
                         <th>Total</th>
                         <th>Model Mobil</th>
                         <th>Status</th>
@@ -38,6 +41,7 @@
                     <tr>
                         <td><?=$no++?>.</td>
                         <td><?=$data->sewa_kode_sewa?></td>
+                        <td><?=$data->name?></td>
                         <td><?=$data->sewa_tgl_sewa?></td>
                         <td><?=$data->sewa_tgl_kembali?></td>
                         <td><?=$data->lokasi?></td>
@@ -45,7 +49,9 @@
                         <td><?=$data->email?></td>
                         <td><?=$data->telepon?></td>
                         <td><?=$data->durasi_sewa?></td>
-                        <td><?=$data->harga?></td>
+                        <td>Rp.<?=number_format($data->biaya_driver,0,',','.')?></td>
+                        <td>Rp.<?=number_format($data->harga,0,',','.')?></td>
+                        <td>Rp.<?=number_format($data->biaya_driver+$data->harga,0,',','.')?></td>
                         <td><?=$data->mobil_nama_mobil?></td>
                         <td><?=$data->status?></td>
                     </tr>

@@ -8,7 +8,7 @@ class Konfirmasi extends CI_Controller {
         parent::__construct();
         //check_not_login();
         //check_admin();
-		$this->load->model(['konfirmasi_m', 'mobil_m']);
+		$this->load->model(['konfirmasi_m', 'mobil_m', 'driver_m']);
 		$this->load->library('form_validation');
     }
 

@@ -12,7 +12,7 @@
         <div class="box-header">
             <h3 class="box-title"><b><?php echo ucfirst($page) ?></b>&nbsp;Data Sewa</h3>
             <div class="pull-right">
-                <a href="<?= site_url('sewa')?>" class="btn btn-warning btn-flat"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back</a>
+                <a href="<?= site_url('menunggu%20pembayaran')?>" class="btn btn-warning btn-flat"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Back</a>
             </div>
         </div>
         <div class="box-body">

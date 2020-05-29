@@ -22,6 +22,18 @@ class User_m extends CI_Model{
         $query = $this->db->get();
         return $query;
     }
+   
+    // public function get_id($id = null)
+    // {
+    //     $this->db->from('user');
+    //     if($id != null)
+    //     {
+    //         $this->db->where('user_id', $id);
+    //     }
+    //     $this->db->limit(1);
+    //     $query = $this->db->get();
+    //     return $query;
+    // }
     
     public function add($post)
     {

@@ -218,16 +218,11 @@
 					<div class="widget_heading">
 						<h5><i class="fa fa-envelope"></i>Sewa Sekarang</h5>
 					</div>
-					<form action="<?= site_url('booking/sewa/mobil/kode'.$data->id_mobil)?>" method="get">
-						<input type="hidden" class="form-control" name="nama_mobil" value="<?= $data->nama_mobil?>" required/>
-						<div class="form-group" align="center">
-							<?php if($this->session->userdata('username')) { ?>
-							<button class="btn">Sewa Sekarang</button>
-							<?php }else{?>
-							<a href="<?= site_url('login-user')?>" class="btn">Login</a>
-							<?php }?>
-						</div>
-					</form>
+					<?php if($this->session->userdata('username')) { ?>
+						<a href="<?= site_url('booking/sewa/mobil/kode'.$data->id_mobil)?>" class="btn">Sewa Sekarang</a>
+					<?php }else{?>
+						<a href="<?= site_url('login-user')?>" class="btn">Login</a>
+					<?php }?>
 				</div>
 				</aside>
 			</div>
