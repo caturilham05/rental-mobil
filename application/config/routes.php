@@ -13,6 +13,8 @@ $route['data%20mitra'] = 'user/data_mitra';
 $route['biaya'] = 'driver';
 // biaya edit
 $route['edit%20biaya/(:num)'] = 'driver/edit/$1';
+// pengembalian mobil
+$route['pengembalian-mobil'] = 'pengembalian';
 
 // Bagian User
 // Menunggu Pembayaran
@@ -27,6 +29,8 @@ $route['detail-mobil/(:num)'] = 'daftarmobil/detail/$1';
 $route['booking/sewa/mobil/kode(:num)'] = 'booking/sewa/$1';
 // riwayat sewa
 $route['riwayat%20sewa'] = 'pembayaran/riwayat_sewa';
+// riwayat sewa
+$route['riwayat%20sewa/upload-pembayaran/(:num)'] = 'booking/edit/$1';
 
 
 

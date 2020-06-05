@@ -39,6 +39,156 @@
     <!-- /Header --> 
 
     <!-- content -->
+    <section class="user_profile inner_pages">
+        <center><h3>Riwayat Sewa</h3></center>
+            <div class="col-md-12">
+                <table class="table table-striped table-bordered table-responsive" >
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th class="text-center" class="text-center">Kode Sewa</th>
+                            <th class="text-center">Penyewa</th>
+                            <th class="text-center">Tanggal Sewa</th>
+                            <th class="text-center">Tanggal Kembali</th>
+                            <th class="text-center">Total</th>
+                            <th class="text-center">Mobil</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Opsi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <?php 
+                                $no = 1;
+                                foreach($row->result() as $riwayat => $data) : ?>
+                            <td class="text-center"><?= $no++ ?></td>
+                            <td class="text-center"><?= $data->sewa_kode_sewa ?></td>
+                            <td class="text-center"><?= $data->name ?></td>
+                            <td class="text-center"><?= $data->sewa_tgl_sewa ?></td>
+                            <td class="text-center"><?= $data->sewa_tgl_kembali ?></td>
+                            <td class="text-center">Rp.<?=number_format($data->biaya_driver+$data->harga,0,',','.')?></td>
+                            <td class="text-center"><?=$data->mobil_nama_mobil?></td>
+                            <td class="text-center"><?=$data->status?></td>
+                            <td class="text-center">
+                            <a href="<?= site_url('riwayat%20sewa/upload-pembayaran/'.$data->id_detail_sewa)?>" class="btn btn-xs">Edit</a>
+                            <a id="select" class="btn btn-xs" data-toggle="modal" data-target="#modal-detail"
+                                data-kodesewa="<?= $data->sewa_kode_sewa?>"
+                                data-namapengguna="<?= $data->name?>"
+                                data-tglsewa="<?= $data->sewa_tgl_sewa?>"
+                                data-tglkembali="<?= $data->sewa_tgl_kembali?>"
+                                data-lokasisewa="<?= $data->lokasi?>"
+                                data-pengambilan="<?= $data->waktu_pengambilan?>"
+                                data-emailpenyewa="<?= $data->email?>"
+                                data-teleponpenyewa="<?= $data->telepon?>"
+                                data-durasi="<?= $data->durasi_sewa?>"
+                                data-driver="<?=number_format($data->biaya_driver,0,',','.')?>"
+                                data-hargamobil="<?=number_format($data->harga,0,',','.')?>"
+                                data-totalsemua="<?=number_format($data->biaya_driver+$data->harga,0,',','.')?>"
+                                data-mobil="<?= $data->mobil_nama_mobil?>"
+                                data-statussewa="<?= $data->status?>"
+                                data-buktitransfer="
+                                <?php if($data->bukti != null){ ?>
+                                    <?= $data->bukti?> 
+                                <?php }else{ ?>
+                                Silahkan upload bukti pembayaran
+                                <?php } ?>                                    
+                                ">Detail</a>
+                            </td>
+                            <?php endforeach ?>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </section>
+
+    <!-- modal -->
+    <div class="modal fade" id="modal-detail">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" data-dismiss="modal" aria-label="close" class="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <center><h4 class="modal-title">Detail Riwayat Sewa</h4></center>
+                </div>
+                <div class="modal-body table-responsive">
+                    <table class="table table-bordered no-margin">
+                        <tbody>
+                            <tr>
+                                <th width="200">Kode Sewa :</th>
+                                <td><center><span id="sewa_kode_sewa"></center></span></td>
+                            </tr>
+                            <tr>
+                                <th>Penyewa :</th>
+                                <td><center><span id="name"></span></center></td>
+                            </tr>
+                            <tr>
+                                <th>Tanggal Sewa :</th>
+                                <td><center><span id="sewa_tgl_sewa"></span></center></td>
+                            </tr>
+                            <tr>
+                                <th>Tanggal Kembali :</th>
+                                <td><center><span id="sewa_tgl_kembali"></span></center></td>
+                            </tr>
+                            <tr>
+                                <th>Lokasi :</th>
+                                <td><center><span id="lokasi"></span></center></td>
+                            </tr>
+                            <tr>
+                                <th>Waktu Pengambilan :</th>
+                                <td><center><span id="waktu_pengambilan"></center></span></td>
+                            </tr>
+                            <tr>
+                                <th>Email :</th>
+                                <td><center><span id="email"></span></center></td>
+                            </tr>
+                            <tr>
+                                <th>Telepon :</th>
+                                <td><center><span id="telepon"></span></center></td>
+                            </tr>
+                            <tr>
+                                <th>Durasi Sewa :</th>
+                                <td><center><span id="durasi_sewa"></center></span></td>
+                            </tr>
+                            <tr>
+                                <th>Biaya Driver :</th>
+                                <td><center><span id="biaya_driver"></span></center></td>
+                            </tr>
+                            <tr>
+                                <th>Harga :</th>
+                                <td><center><span id="harga"></span></center></td>
+                            </tr>
+                            <tr>
+                                <th>Total :</th>
+                                <td><center><span id="total"></span></center></td>
+                            </tr>
+                            <tr>
+                                <th>Mobil :</th>
+                                <td><center><span id="mobil_nama_mobil"></span></center></td>
+                            </tr>
+                            <tr>
+                                <th>Status :</th>
+                                <td><center><span id="status"></span></center></td>
+                            </tr>
+                            <tr>
+                                <th>Bukti Transfer :</th>
+                                <?php if($data->bukti != null){ ?>
+                                <td>
+                                <center><img src="<?=base_url('uploads/transaksi/'.$data->bukti)?>" id="transfer"></center>
+                                </td>
+                                <?php }else{ ?>
+                                <td>
+                                <center><b id="transfer"></b></center>
+                                </td>
+                                <?php } ?>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end modal -->
     
     <!-- end content -->
 
@@ -63,6 +213,42 @@
 <script src="<?= base_url('assets/js/owl.carousel.min.js')?>"></script>
 
 <script src="<?= base_url('assets/js/scroll.js')?>"></script>
+<script>
+    $(document).ready(function(){
+        $(document).on('click', '#select', function(){
+            var kodesewa = $(this).data('kodesewa');
+            var namapengguna = $(this).data('namapengguna');
+            var tglsewa = $(this).data('tglsewa');
+            var tglkembali = $(this).data('tglkembali');
+            var lokasisewa = $(this).data('lokasisewa');
+            var pengambilan = $(this).data('pengambilan');
+            var emailpenyewa = $(this).data('emailpenyewa');
+            var teleponpenyewa = $(this).data('teleponpenyewa');
+            var durasi = $(this).data('durasi');
+            var driver = $(this).data('driver');
+            var hargamobil = $(this).data('hargamobil');
+            var totalsemua = $(this).data('totalsemua');
+            var mobil = $(this).data('mobil');
+            var statussewa = $(this).data('statussewa');
+            var buktitransfer = $(this).data('buktitransfer');
+                $('#sewa_kode_sewa').text(kodesewa);
+                $('#name').text(namapengguna);
+                $('#sewa_tgl_sewa').text(tglsewa);
+                $('#sewa_tgl_kembali').text(tglkembali);
+                $('#lokasi').text(lokasisewa);
+                $('#waktu_pengambilan').text(pengambilan);
+                $('#email').text(emailpenyewa);
+                $('#telepon').text(teleponpenyewa);
+                $('#durasi_sewa').text(durasi);
+                $('#biaya_driver').text(driver);
+                $('#harga').text(hargamobil);
+                $('#total').text(totalsemua);
+                $('#mobil_nama_mobil').text(mobil);
+                $('#status').text(statussewa);
+                 $('#transfer').text(buktitransfer);
+        })
+    })
+</script>
 
 </body>
 

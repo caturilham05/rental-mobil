@@ -1,8 +1,8 @@
 <section class="content-header">
-    <h1>Menunggu<small>&nbsp;Pembayaran</small></h1>
+    <h1>Data<small>&nbsp;Pengembalian</small></h1>
     <ol class="breadcrumb">
         <li><a href="<?= site_url('dashboard')?>"><i class="fa fa-dashboard"></i>Home</a></li>
-        <li class="Active">Menunggu Pembayaran</li>
+        <li class="Active">Data Pengembalian</li>
     </ol>
 </section>
 
@@ -11,7 +11,7 @@
             <?php //$this->view('popup/messages')?>
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title"><b>Menunggu</b>&nbsp;Pembayaran</h3>
+            <h3 class="box-title"><b>Data</b>&nbsp;Pengembalian</h3>
         </div>
         <div class="box-body table-responsive">
             <table class="table table-bordered table-striped text-center" id="example1">
@@ -26,13 +26,13 @@
                         <th>Model Mobil</th>
                         <th>Bukti Pembayaran</th>
                         <th>Status</th>
-                        <th>Aksi</th>
+                        <th>Lihat Detail</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php
                     $no = 1;
-                    foreach($row->result() as $pembayaran => $data) {?>
+                    foreach($row->result() as $sewa => $data) {?>
                     <tr>
                         <td><?=$no++?>.</td>
                         <td><?=$data->sewa_kode_sewa?></td>
@@ -42,17 +42,13 @@
                         <td>Rp.<?=number_format($data->biaya_driver+$data->harga,0,',','.')?></td>
                         <td><?=$data->mobil_nama_mobil?></td>
                         <td>
-                            <?php if($data->bukti != null){ ?>
+                            <?php if($data->bukti != null): ?>
                             <img src="<?=base_url('uploads/transaksi/'.$data->bukti)?>" style="width: 100px">
-                            <a href="<?=site_url('uploads/transaksi/'.$data->bukti)?>" class="btn btn-xs btn-success" target="_blank">Bukti Transfer</a>
-                            <?php }else{ ?>
-                            <b>Belum Melakukan Pembayaran</b>
-                            <?php } ?>
+                            <?php endif; ?>
                         </td>
                         <td><?=$data->status?></td>
-                        <td width="150">
-                        <a href="<?= site_url('pembayaran/edit/'.$data->id_detail_sewa)?>" class="btn btn-primary"><i class="fa fa-pencil"></i>&nbsp;Edit</a>
-                        <a id="view" class="btn btn-info" data-toggle="modal" data-target="#modal-detail"
+                        <td>
+                            <a id="view" class="btn btn-info" data-toggle="modal" data-target="#modal-detail"
                                 data-kodesewa="<?= $data->sewa_kode_sewa?>"
                                 data-namapengguna="<?= $data->name?>"
                                 data-tglsewa="<?= $data->sewa_tgl_sewa?>"
@@ -67,7 +63,12 @@
                                 data-totalsemua="<?=number_format($data->biaya_driver+$data->harga,0,',','.')?>"
                                 data-mobil="<?= $data->mobil_nama_mobil?>"
                                 data-statussewa="<?= $data->status?>"
-                                ><i class="fa fa-eye"></i> Detail</a>
+                                data-buktitransfer="
+                                <?php if($data->bukti != null){ ?>
+                                    <?= $data->bukti?> 
+                                <?php }else{ ?>
+                                Belum Melakukan Pembayaran
+                                <?php } ?>"><i class="fa fa-eye"></i> Detail</a>
                         </td>
                     </tr>
                     <?php } ?>
@@ -76,6 +77,7 @@
         </div>
     </div>
 </section>
+
 <div class="modal fade" id="modal-detail">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -144,9 +146,26 @@
                                 <th>Status :</th>
                                 <td><center><span id="status"></span></center></td>
                             </tr>
+                            <tr>
+                                <th>Bukti Transfer :</th>
+                                <?php if($data->bukti != null){ ?>
+                                <td>
+                                <center><img src="<?=base_url('uploads/transaksi/'.$data->bukti)?>" width="468" id="transfer"></center>
+                                </td>
+                                <?php }else{ ?>
+                                <td>
+                                <center><b id="transfer"></b></center>
+                                </td>
+                                <?php } ?>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+
+

@@ -21,8 +21,8 @@ class Pembayaran extends CI_Controller {
 	
 	public function riwayat_sewa()
 	{
-		// $data['row'] = $this->pembayaran_m->get_riwayat($name);
-		$this->load->view('home/riwayat/riwayat_sewa');
+		$data['row'] = $this->pembayaran_m->get_riwayat();
+		$this->load->view('home/riwayat/riwayat_sewa', $data);
 	}
 	
 	public function add(){

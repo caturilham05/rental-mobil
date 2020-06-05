@@ -43,93 +43,21 @@
 		<div class="container">
 			<div class="user_profile_info">
 				<div class="col-md-12 col-sm-10">
-					<?php foreach($row->result() as $detail => $data): ?>
 						<?php echo form_open_multipart('booking/proses') ?>
-						<div class="form-group">
-						<label for="tgl_sewa">Tanggal Sewa</label>
-							<input type="hidden" name="mobil" value="<?= $data->id_mobil?>" class="form-control" required/>
-							<input type="hidden" name="name" value="<?= $this->session->userdata('name')?>" class="form-control" required/>
-							<input type="date" name="tgl_sewa" value="" class="form-control" required/>
-						</div>
-
-						<div class="form-group">
-							<label for="tgl_kembali">Tanggal Kembali</label>
-							<input type="date" name="tgl_kembali" value="" class="form-control" required/>
-						</div>
-
-						<div class="form-group">
-							<label for="lokasi">Alamat</label>
-							<input type="text" name="lokasi" class="form-control" placeholder="Alamat" required/>
-						</div>
-
-						<div class="form-group">
-							<label for="waktu_pengambilan">Waktu Pengambilan</label>
-							<select name="waktu_pengambilan" class="form-control" required/>
-								<option value="">- Pilih Waktu Pengambilan -</option>
-								<option value="09:00 AM">- 09:00 AM -</option>
-								<option value="10:00 AM">- 10:00 AM -</option>
-								<option value="11:00 AM">- 11:00 AM -</option>
-								<option value="12:00 PM">- 12:00 PM -</option>
-								<option value="01:00 PM">- 01:00 PM -</option>
-								<option value="02:00 PM">- 02:00 PM -</option>
-								<option value="03:00 PM">- 03:00 PM -</option>
-							</select>
-						</div>
-
-						                    
-						<div class="form-group">
-                        	<label for="email">Email</label>
-                        	<input type="email" name="email" placeholder="Email" class="form-control" required/>
-                    	</div>
-                    
-						<div class="form-group">
-							<label for="telepon">Telepon</label>
-							<input type="text" name="telepon" placeholder="Nomor Telepon" class="form-control" required/>
-						</div>
-                    
-
-						<div class="form-group">
-                       		<label for="durasi_sewa">Durasi Sewa</label>
-                        		<select name="durasi_sewa" class="form-control" required/>
-                            		<option value="">- Pilih Durasi Sewa -</option>
-									<option value="1 hari">- 1 Hari -</option>
-									<option value="2 hari">- 2 Hari -</option>
-									<option value="lebih 3 hari">- Lebih 3 Hari -</option>
-								</select>
-                    	</div>						
-                    
-						<div class="form-group">
-                        <label for="biaya">Driver / Tidak</label>
-                            <select name="biaya" class="form-control" required/>
-                                <option value="">- Driver / Tidak -</option>
-                                <?php foreach($driver->result()  as $biaya => $denda) { ?>
-                                <option value="<?=$denda->id_biaya?>">
-                                <?=$denda->keterangan?></option>
-                                <?php } ?>
-                            </select>
-						</div>
-					
 						
 						<div class="form-group">
-                        	<label for="harga">Harga</label>
-							<input type="text" name="harga" value="<?=$data->harga?>" class="form-control" readonly/>
-						</div>
-						
-						<!-- <div class="form-group">
 							<label for="bukti_pembayaran">Bukti Pembayaran</label>
-							<input type="file" name="bukti_pembayaran" class="form-control">
-                    	</div> -->
+							<input type="file" name="bukti" class="form-control" required>
+							<input type="hidden" name="id_detail_sewa" value="<?= $row->id_detail_sewa?>" class="form-control" required/>
+							<input type="hidden" name="id_mobil" value="<?= $row->id_mobil?>" class="form-control" required/>
+							<input type="hidden" name="name" value="<?= $this->session->userdata('name')?>" class="form-control" required/>
+							<input type="hidden" name="status" value="menunggu konfirmasi" class="form-control" readonly/>
 
+                    	</div></br>
 						<div class="form-group">
-							<label for="status">Status</label>
-							<input type="text" name="status" value="menunggu pembayaran" class="form-control" readonly/>
-						</div></br>
-
-						<div class="form-group">
-                        <button type="submit" name="add" class="btn btn-success "><i class="fa fa-send"></i>&nbsp;Sewa Sekarang</button>
+                        <button type="submit" name="edit" class="btn btn-success "><i class="fa fa-send"></i>&nbsp;Edit</button>
                     </div>
 					</form>
-					<?php endforeach ?>
 				</div>
 			</div>
 		</div>

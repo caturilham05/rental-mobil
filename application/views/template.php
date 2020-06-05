@@ -132,7 +132,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <ul class="treeview-menu">
             <li <?= $this->uri->segment(1) == 'menunggu%20pembayaran' ? 'class="active"' : '' ?>><a href="<?php echo site_url('menunggu%20pembayaran')?>"><i class="fa fa-circle-o"></i>Menunggu Pembayaran</a></li>
             <li <?= $this->uri->segment(1) == 'menunggu%20konfirmasi' ? 'class="active"' : '' ?>><a href="<?php echo site_url('menunggu%20konfirmasi')?>"><i class="fa fa-circle-o"></i>Menunggu Konfirmasi</a></li>
-            <li <?= $this->uri->segment(1) == 'pengembalian' ? 'class="active"' : '' ?>><a href="<?php echo site_url('pengembalian')?>"><i class="fa fa-circle-o"></i>Data Pengembalian Mobil</a></li>
+            <li <?= $this->uri->segment(1) == 'pengembalian-mobil' ? 'class="active"' : '' ?>><a href="<?php echo site_url('pengembalian')?>"><i class="fa fa-circle-o"></i>Data Pengembalian Mobil</a></li>
             <li <?= $this->uri->segment(1) == 'sewa' ? 'class="active"' : '' ?>><a href="<?php echo site_url('sewa')?>"><i class="fa fa-circle-o"></i>Data Sewa</a></li>
           </ul>
         </li>
@@ -264,6 +264,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
       checkboxClass: 'icheckbox_flat-green',
       radioClass   : 'iradio_flat-green'
+    })
+</script>
+<script>
+    $(document).ready(function(){
+        $(document).on('click', '#view', function(){
+            var kodesewa = $(this).data('kodesewa');
+            var namapengguna = $(this).data('namapengguna');
+            var tglsewa = $(this).data('tglsewa');
+            var tglkembali = $(this).data('tglkembali');
+            var lokasisewa = $(this).data('lokasisewa');
+            var pengambilan = $(this).data('pengambilan');
+            var emailpenyewa = $(this).data('emailpenyewa');
+            var teleponpenyewa = $(this).data('teleponpenyewa');
+            var durasi = $(this).data('durasi');
+            var driver = $(this).data('driver');
+            var hargamobil = $(this).data('hargamobil');
+            var totalsemua = $(this).data('totalsemua');
+            var mobil = $(this).data('mobil');
+            var statussewa = $(this).data('statussewa');
+                $('#sewa_kode_sewa').text(kodesewa);
+                $('#name').text(namapengguna);
+                $('#sewa_tgl_sewa').text(tglsewa);
+                $('#sewa_tgl_kembali').text(tglkembali);
+                $('#lokasi').text(lokasisewa);
+                $('#waktu_pengambilan').text(pengambilan);
+                $('#email').text(emailpenyewa);
+                $('#telepon').text(teleponpenyewa);
+                $('#durasi_sewa').text(durasi);
+                $('#biaya_driver').text(driver);
+                $('#harga').text(hargamobil);
+                $('#total').text(totalsemua);
+                $('#mobil_nama_mobil').text(mobil);
+                $('#status').text(statussewa);
+        })
     })
 </script>
 </body>

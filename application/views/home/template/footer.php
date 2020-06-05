@@ -1,5 +1,5 @@
 <footer>
-  <div class="footer-top">
+  <div class="footer-top" style="margin-top: 10%">
     <div class="container">
       <div class="row">
       

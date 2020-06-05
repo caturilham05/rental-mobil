@@ -14,13 +14,10 @@ class Sewa_m extends CI_Model {
         $this->db->join('sewa_mobil', 'sewa_mobil.id_sewa = detail_sewa_mobil.id_sewa');
         $this->db->join('mobil', 'mobil.id_mobil = detail_sewa_mobil.id_mobil');
         $this->db->join('biaya', 'biaya.id_biaya = detail_sewa_mobil.id_biaya');
-        //$this->db->where('detail_sewa_mobil.status = "selesai"');
-        //$this->db->from('detail_sewa_mobil');
         if($id != null)
         {
             $this->db->where('id_detail_sewa', $id);
         }
-        $this->db->order_by('id_detail_sewa', 'asc');
         $query = $this->db->get();
         return $query;
     }
@@ -39,6 +36,7 @@ class Sewa_m extends CI_Model {
             'telepon' => $post['telepon'],
             'durasi_sewa' => $post['durasi_sewa'],
             'harga' => $post['harga'],
+            'bukti' => $post['bukti'],
             'status' => $post['status']
 
         ];
@@ -48,6 +46,7 @@ class Sewa_m extends CI_Model {
 
     public function edit($post){
         $params= [
+            'bukti' => $post['bukti'],
             'status' => $post['status']
         ];
         $this->db->where('id_detail_sewa', $post['id_detail_sewa']);
