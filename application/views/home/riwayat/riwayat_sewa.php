@@ -56,11 +56,11 @@
                             <th class="text-center">Opsi</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
                             <?php 
                                 $no = 1;
                                 foreach($row->result() as $riwayat => $data) : ?>
+                    <tbody>
+                        <tr>
                             <td class="text-center"><?= $no++ ?></td>
                             <td class="text-center"><?= $data->sewa_kode_sewa ?></td>
                             <td class="text-center"><?= $data->name ?></td>
@@ -94,9 +94,9 @@
                                 <?php } ?>                                    
                                 ">Detail</a>
                             </td>
-                            <?php endforeach ?>
                         </tr>
                     </tbody>
+                            <?php endforeach ?>
                 </table>
             </div>
     </section>

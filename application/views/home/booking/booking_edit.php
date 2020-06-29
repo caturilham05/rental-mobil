@@ -44,19 +44,68 @@
 			<div class="user_profile_info">
 				<div class="col-md-12 col-sm-10">
 						<?php echo form_open_multipart('booking/proses') ?>
-						
+						<?php if($row->status == 'pembayaran terkonfirmasi') { ?>
+							<div class="form-group">
+								<label for="bukti">Bukti Transfer</label>
+							<?php if($row->bukti != null): ?>
+								<div style="margin-bottom: 5px">
+									<img src="<?php echo base_url('uploads/transaksi/'.$row->bukti) ?>" style="width:75%">
+								</div>
+							<?php endif ?>
+							</div>
+
+							<div class="form-group">
+							<label for="status">Status</label>
+							<input type="hidden" name="id_detail_sewa" value="<?= $row->id_detail_sewa?>" class="form-control" required/>
+							<select name="status" class="form-control">
+								<?php $status = $this->input->post('status') ? $this->input->post('status') : $row->status ?>
+								<option value="pembayaran terkonfirmasi" <?= $status == 'pembayaran terkonfirmasi' ? 'selected' : null ?>>-- Pembayaran Terkonfirmasi --</option>
+								<option value="selesai" <?= $status == 'selesai' ? 'selected' : null ?>>-- Selesai --</option>
+							</select>
+						</div>
+						<?php }else if($row->status == 'menunggu konfirmasi') { ?>
+							<div class="form-group">
+								<label for="bukti">Bukti Transfer</label>
+							<?php if($row->bukti != null): ?>
+								<div style="margin-bottom: 5px">
+									<img src="<?php echo base_url('uploads/transaksi/'.$row->bukti) ?>" style="width:75%">
+								</div>
+							<?php endif ?>
+							</div>
+
+							<div class="form-group">
+								<label for="status">Status</label>
+								<input type="text" name="status" value="<?= $row->status ?>" class="form-control" disabled>
+							</div>
+						<?php }else{ ?>
 						<div class="form-group">
-							<label for="bukti_pembayaran">Bukti Pembayaran</label>
-							<input type="file" name="bukti" class="form-control" required>
+							<label for="bukti">Bukti Pembayaran</label>
+							<input type="file" name="bukti" class="form-control">
 							<input type="hidden" name="id_detail_sewa" value="<?= $row->id_detail_sewa?>" class="form-control" required/>
 							<input type="hidden" name="id_mobil" value="<?= $row->id_mobil?>" class="form-control" required/>
 							<input type="hidden" name="name" value="<?= $this->session->userdata('name')?>" class="form-control" required/>
-							<input type="hidden" name="status" value="menunggu konfirmasi" class="form-control" readonly/>
+                    	</div>
 
-                    	</div></br>
 						<div class="form-group">
-                        <button type="submit" name="edit" class="btn btn-success "><i class="fa fa-send"></i>&nbsp;Edit</button>
-                    </div>
+							<label for="status">Status</label>
+							<select name="status" class="form-control">
+								<?php $status = $this->input->post('status') ? $this->input->post('status') : $row->status ?>
+								<option value="menunggu pembayaran" <?= $status == 'menunggu pembayaran' ? 'selected' : null ?>>-- Menunggu Pembayaran --</option>
+								<option value="menunggu konfirmasi" <?= $status == 'menunggu konfirmasi' ? 'selected' : null ?>>-- Konfirmasi Bukti Pembayaran --</option>
+								<option value="batal" <?= $status == 'batal' ? 'selected' : null ?>>-- batal --</option>
+							</select>
+						</div>
+						<?php } ?>
+						</br>
+						<?php if($row->status == 'menunggu konfirmasi') { ?>
+						<div class="form-group">
+							<a href="<?= site_url('riwayat%20sewa')?>" class="btn btn-danger"><i class="fa fa-arrow-left"></i>Back</a>
+						</div>
+						<?php }else { ?>
+						<div class="form-group">
+                        	<button type="submit" name="edit" class="btn btn-success "><i class="fa fa-send"></i>&nbsp;Edit</button>
+                   		</div>
+						<?php } ?>
 					</form>
 				</div>
 			</div>

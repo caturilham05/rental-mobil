@@ -19,8 +19,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h4 class="text-bold"><?//= date('d.m.Y', $_SESSION['last_login']) ?><p><?//= date('H:i:s', $_SESSION['last_login']) ?></p></h4>
-              <h4>Last Login</h4>
+              <h3><?= $this->db->count_all('user')?></h3>
+              <h4>Akun Terdaftar</h4>
             </div>
             <div class="icon">
               <i class="ion ion-person"></i>
@@ -33,14 +33,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-              <p>Bounce Rate</p>
+            <h3><?= $this->db->count_all('detail_sewa_mobil')?></h3>
+              <h4>Data Penyewaan</h4>
             </div>
             <div class="icon">
-              <i class="ion ion-stats-bars"></i>
+              <i class="fa fa-bar-chart"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?= site_url('sewa') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -49,28 +48,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>1</h3>
+              <h3><?= $this->db->count_all('mobil') ?></h3>
 
-              <h4>Porducts</h4>
+              <h4>Mobil</h4>
             </div>
             <div class="icon">
-              <i class="ion ion-cube"></i>
+              <i class="fa fa-car"></i>
             </div>
-            <a href="<?//= site_url('item')?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?= site_url('mobil')?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>1</h3>
-
-              <h4>User</h4>
+            <h3><?= $this->db->count_all('mitra')?></h3>
+              <h4>Akun Mitra</h4>
             </div>
             <div class="icon">
-              <i class="ion ion-person-add"></i>
+              <i class="ion ion-person"></i>
             </div>
-            <a href="<?php// echo site_url('user')?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo site_url('data%20mitra')?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->

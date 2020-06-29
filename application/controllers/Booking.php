@@ -116,7 +116,7 @@ class Booking extends CI_Controller {
 					echo "<script>window.location='".site_url('booking/edit/'.$post['id_detail_sewa'])."';</script>";
 				}
 			}else{
-				$post['gambar'] = null;
+				$post['bukti'] = null;
 				$this->pembayaran_m->edit($post);
 				if($this->db->affected_rows() == 1){
 					$this->session->set_flashdata('success', 'Data Berhasil Disimpan!');

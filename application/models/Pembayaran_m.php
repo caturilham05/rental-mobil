@@ -34,7 +34,7 @@ class Pembayaran_m extends CI_Model {
         sewa_mobil.tgl_sewa as sewa_tgl_sewa,
         sewa_mobil.tgl_kembali as sewa_tgl_kembali,
         biaya.driver as biaya_driver,
-        mobil.nama_mobil as mobil_nama_mobil',);
+        mobil.nama_mobil as mobil_nama_mobil');
         $this->db->from('detail_sewa_mobil');
         $this->db->join('sewa_mobil', 'sewa_mobil.id_sewa = detail_sewa_mobil.id_sewa');
         $this->db->join('mobil', 'mobil.id_mobil = detail_sewa_mobil.id_mobil');
@@ -57,9 +57,11 @@ class Pembayaran_m extends CI_Model {
 
     public function edit($post){
         $params= [
-            'bukti_pembayaran' => $post['bukti_pembayaran'],
             'status' => $post['status']
         ];
+        if($post['bukti'] != null){
+            $params['bukti'] = $post['bukti'];
+        }
         $this->db->where('id_detail_sewa', $post['id_detail_sewa']);
         $this->db->update('detail_sewa_mobil', $params);
     }
