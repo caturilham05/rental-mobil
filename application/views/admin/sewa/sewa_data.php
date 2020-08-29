@@ -37,23 +37,39 @@
                         <td><?=$no++?>.</td>
                         <td><?=$data->sewa_kode_sewa?></td>
                         <td><?=$data->name?></td>
-                        <td><?=$data->sewa_tgl_sewa?></td>
-                        <td><?=$data->sewa_tgl_kembali?></td>
-                        <td>Rp.<?=number_format($data->biaya_driver+$data->harga,0,',','.')?></td>
+                        <td class="text-center"><?= date('d/F/Y', strtotime($data->sewa_tgl_sewa)) ?></td>
+                        <td class="text-center"><?= date('d/F/Y', strtotime($data->sewa_tgl_kembali)) ?></td>
+                        <td>
+                                <!-- Kondisional Sewa Mobil Berdasarkan Hari -->
+                                <?php
+                                    $dur = $data->durasi_sewa;
+                                    if($dur == '1 hari' ){ ?>
+                                        Rp.<?= number_format($data->biaya_driver*1+$data->harga*1,0,',','.')?>
+                                    <?php }else if( $dur == '2 hari'){ ?>
+                                        Rp.<?= number_format($data->biaya_driver*2+$data->harga*2,0,',','.') ?>
+                                    <?php }else if( $dur == 'lebih 3 hari'){ ?>
+                                        Rp.<?= number_format($data->biaya_driver*3.8+$data->harga*3.8,0,',','.') ?>
+                                <?php } ?>
+                                <!-- Kondisional Sewa Mobil Berdasarkan Hari -->
+
+
+                        </td>
                         <td><?=$data->mobil_nama_mobil?></td>
                         <td>
-                            <?php if($data->bukti != null): ?>
+                            <?php if($data->bukti != null){ ?>
                             <img src="<?=base_url('uploads/transaksi/'.$data->bukti)?>" style="width: 100px">
                             <a href="<?=site_url('uploads/transaksi/'.$data->bukti)?>" class="btn btn-xs btn-success" target="_blank">Bukti Transfer</a>
-                            <?php endif; ?>
+                            <?php }else{ ?>
+                                <b>Belum Melakukan Pembayaran</b>
+                           <?php } ?>
                         </td>
                         <td><?=$data->status?></td>
                         <td>
                             <a id="view" class="btn btn-info" data-toggle="modal" data-target="#modal-detail"
                                 data-kodesewa="<?= $data->sewa_kode_sewa?>"
                                 data-namapengguna="<?= $data->name?>"
-                                data-tglsewa="<?= $data->sewa_tgl_sewa?>"
-                                data-tglkembali="<?= $data->sewa_tgl_kembali?>"
+                                data-tglsewa="<?= date('d/F/Y', strtotime($data->sewa_tgl_sewa))?>"
+                                data-tglkembali="<?= date('d/F/Y', strtotime($data->sewa_tgl_kembali))?>"
                                 data-lokasisewa="<?= $data->lokasi?>"
                                 data-pengambilan="<?= $data->waktu_pengambilan?>"
                                 data-emailpenyewa="<?= $data->email?>"
@@ -61,7 +77,20 @@
                                 data-durasi="<?= $data->durasi_sewa?>"
                                 data-driver="<?=number_format($data->biaya_driver,0,',','.')?>"
                                 data-hargamobil="<?=number_format($data->harga,0,',','.')?>"
-                                data-totalsemua="<?=number_format($data->biaya_driver+$data->harga,0,',','.')?>"
+
+                                <?php
+                                //kondisional sewa mobil
+                                $dur = $data->durasi_sewa;
+                                if($dur == '1 hari' ){ ?>
+                                data-totalsemua="<?=number_format($data->biaya_driver*1+$data->harga*1,0,',','.')?>"
+                                <?php }else if( $dur == '2 hari'){ ?>
+                                data-totalsemua="<?=number_format($data->biaya_driver*2+$data->harga*2,0,',','.')?>"
+                                <?php }else if( $dur == 'lebih 3 hari'){ ?>
+                                data-totalsemua="<?=number_format($data->biaya_driver*3.8+$data->harga*3.8,0,',','.')?>"
+                                <?php }
+                                // akhir Kondisional Sewa mobil
+                                ?>
+
                                 data-mobil="<?= $data->mobil_nama_mobil?>"
                                 data-statussewa="<?= $data->status?>"><i class="fa fa-eye"></i> Detail</a>
                         </td>

@@ -63,5 +63,23 @@ class Sewa_m extends CI_Model {
         $this->db->where('kode_sewa', $id);
         $this->db->delete('sewa');
     }
+
+
+    public function chart($id = null){
+        $this->db->select('detail_sewa_mobil.*,
+        sewa_mobil.tgl_sewa as sewa_tgl_sewa,
+        biaya.driver as biaya_driver');
+        $this->db->from('detail_sewa_mobil');
+        $this->db->join('sewa_mobil', 'sewa_mobil.id_sewa = detail_sewa_mobil.id_sewa');
+        $this->db->join('mobil', 'mobil.id_mobil = detail_sewa_mobil.id_mobil');
+        $this->db->join('biaya', 'biaya.id_biaya = detail_sewa_mobil.id_biaya');
+        if($id != null)
+        {
+            $this->db->where('id_detail_sewa', $id);
+        }
+        $this->db->order_by('sewa_tgl_sewa', 'ASC');
+        $query = $this->db->get();
+        return $query;
+    }
 }
 

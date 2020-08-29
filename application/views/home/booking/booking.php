@@ -43,7 +43,8 @@
 		<div class="container">
 			<div class="user_profile_info">
 				<div class="col-md-12 col-sm-10">
-					<?php foreach($row->result() as $detail => $data): ?>
+					<?php 
+						foreach($row->result() as $detail => $data): ?>
 						<?php echo form_open_multipart('booking/proses') ?>
 						<div class="form-group">
 						<label for="tgl_sewa">Tanggal Sewa</label>

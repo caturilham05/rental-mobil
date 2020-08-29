@@ -40,6 +40,10 @@ class Sewa extends CI_Controller {
 		$sewa->durasi_sewa = null;
 		$sewa->harga = null;
 		$sewa->status = null;
+		$durasinya = $sewa->durasi_sewa;
+		$harganya = $sewa->harga;
+
+		
 
 		$data = array(
 			'page' => 'add',
@@ -71,8 +75,10 @@ class Sewa extends CI_Controller {
 	}
 
 	public function proses(){
+		
 		$this->db->set('kode_sewa', 'UUID()', FALSE);
 		$post = $this->input->post(null, TRUE);
+		
 		if(isset($_POST['add'])){
 			$this->simpel_sewa->add($post);
 			$this->sewa_m->add($post);

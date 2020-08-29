@@ -40,6 +40,8 @@ $route['register'] = 'user/add';
 $route['login-user'] = 'auth/login_user';
 // user logout
 $route['logout'] = 'auth/logout_user';
+// user Edit akun
+$route['pengaturan%20akun'] = 'user/edit';
 
 
 

@@ -18,7 +18,7 @@ class Simpel_sewa extends CI_Model {
             //'kode_sewa' => $post['kode_sewa'],
             'id_mobil' => $post['mobil'],
             'tgl_sewa' => $post['tgl_sewa'],
-            'tgl_kembali' => $post['tgl_sewa'],
+            'tgl_kembali' => $post['tgl_kembali'],
         ];
         $this->db->insert('sewa_mobil', $params);
 

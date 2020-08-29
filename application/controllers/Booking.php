@@ -69,7 +69,11 @@ class Booking extends CI_Controller {
 		$config['file_name']      = 'Bukti-Pembayaran-'.date('ymd').'-'.substr(sha1(rand()),0,10);
 		$this->load->library('upload', $config);
 
+		// $durasinya = $sewa->durasi_sewa;
+		// $harganya = $sewa->harga;
+		// var_dump($harganya);die();
 		$post = $this->input->post(null, TRUE);
+		
 		if(isset($_POST['add'])){
 			$this->db->set('kode_sewa', 'UUID()', FALSE);
 			if(@$_FILES['bukti']['name'] != null){

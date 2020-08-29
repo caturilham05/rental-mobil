@@ -22,6 +22,18 @@ class User_m extends CI_Model{
         $query = $this->db->get();
         return $query;
     }
+    
+    public function get_user($id = null)
+    {
+        $user = $this->session->userdata('user_id');
+        $this->db->from('user');
+        if($id != null)
+        {
+            $this->db->where('user_id', $id);
+        }
+        $query = $this->db->get();
+        return $query;
+    }
    
     // public function get_id($id = null)
     // {
@@ -48,19 +60,21 @@ class User_m extends CI_Model{
         $this->db->insert('user', $params);
 
     }
-    public function edit($post)
+    public function edit($where, $data, $table)
     {
-        $params['name'] = $post['name'];
-        $params['username'] = $post['username'];
-        if(!empty($post['password'])){
-        $params['password'] = sha1($post['password']);
-        }
-        $params['email'] = $post['email'];
-        $params['address'] = $post['address'];
-        $params['level'] = $post['level'];
-        $this->db->where('user_id', $post['user_id']);
-        $this->db->update('user', $params);
+        $this->db->where($where);
+        $this->db->update($table, $data);
 
+        // $params['name'] = $post['name'];
+        // $params['username'] = $post['username'];
+        // if(!empty($post['password'])){
+        // $params['password'] = sha1($post['password']);
+        // }
+        // $params['email'] = $post['email'];
+        // $params['address'] = $post['address'];
+        // $params['level'] = $post['level'];
+        // $this->db->where('user_id', $post['user_id']);
+        // $this->db->update('user', $params);
     }
 
     public function cek_login(){

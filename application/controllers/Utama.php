@@ -7,7 +7,7 @@ class Utama extends CI_Controller {
         parent::__construct();
         //check_not_login_user();
         //check_user();
-		$this->load->model('mobil_m');
+		$this->load->model(['mobil_m', 'user_m']);
 		$this->load->library('form_validation');
 	}
 	
@@ -16,5 +16,4 @@ class Utama extends CI_Controller {
 				$this->load->view('utama', $data);
 		}
 
-		
 }

@@ -35,6 +35,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo base_url()?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <!-- iCheck for checkboxes and radio inputs -->
   <link rel="stylesheet" href="<?= base_url()?>assets/plugins/iCheck/all.css">
+  <!-- Morris Chart js -->
+  <link rel="stylesheet" href="<?= base_url()?>assets/bower_components/morris.js/morris.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -179,6 +181,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+
     <!-- Content Header (Page header) -->
     <?php echo $contents ?>
     <!-- /.content -->
@@ -238,6 +241,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- DataTables -->
 <script src="<?php echo base_url()?>assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url()?>assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- FLOT CHARTS -->
+<script src="<?php echo base_url() ?>assets/bower_components/Flot/jquery.flot.js"></script>
+<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+<script src="<?php echo base_url() ?>assets/bower_components/Flot/jquery.flot.resize.js"></script>
+<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+<script src="<?php echo base_url() ?>assets/bower_components/Flot/jquery.flot.pie.js"></script>
+<!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
+<script src="<?php echo base_url() ?>assets/bower_components/Flot/jquery.flot.categories.js"></script>
 <script>
   $(function () {
     $('#example1').DataTable()
@@ -299,6 +310,54 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $('#status').text(statussewa);
         })
     })
+</script>
+<script>
+  $(function () {
+    var bar_data = {
+      data : [
+            <?php
+              foreach($row->result() as $pembayaran => $data){
+                $dur = $data->durasi_sewa;
+                $total = number_format($data->biaya_driver+$data->harga,0,',','.');
+                if($dur == '1 hari'){
+                  echo"['".($data->sewa_tgl_sewa)."', '".($total*1)."'],";
+                }else if($dur == '2 hari'){
+                  echo"['".($data->sewa_tgl_sewa)."', '".($total*2)."'],";
+                }else{
+                  echo"['".($data->sewa_tgl_sewa)."', '".($total*3.8)."']";
+                }
+              } 
+              ?>
+      ],
+          
+      color: '#3c8dbc'
+    }
+    $.plot('#bar-chart', [bar_data], {
+      grid  : {
+        borderWidth: 1,
+        borderColor: '#f3f3f3',
+        tickColor  : '#f3f3f3'
+      },
+      series: {
+        bars: {
+          show    : true,
+          barWidth: 0.2,
+          align   : 'center'
+        }
+      },
+      xaxis : {
+        mode      : 'categories',
+        tickLength: 0
+      },
+      yaxis : {
+        // min: 0,
+        // max: 5000,
+        tickSize: 200
+      }
+    })
+
+    
+  });
 </script>
 </body>
 </html>

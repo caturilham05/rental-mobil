@@ -58,15 +58,26 @@
                     </thead>
                             <?php 
                                 $no = 1;
+                                if($row->result()){ 
                                 foreach($row->result() as $riwayat => $data) : ?>
                     <tbody>
                         <tr>
                             <td class="text-center"><?= $no++ ?></td>
-                            <td class="text-center"><?= $data->sewa_kode_sewa ?></td>
+                            <td class="text-center"><?= $data->sewa_kode_sewa?></td>
                             <td class="text-center"><?= $data->name ?></td>
-                            <td class="text-center"><?= $data->sewa_tgl_sewa ?></td>
-                            <td class="text-center"><?= $data->sewa_tgl_kembali ?></td>
-                            <td class="text-center">Rp.<?=number_format($data->biaya_driver+$data->harga,0,',','.')?></td>
+                            <td class="text-center"><?= date('d/F/Y', strtotime($data->sewa_tgl_sewa)) ?></td>
+                            <td class="text-center"><?= date('d/F/Y', strtotime($data->sewa_tgl_kembali)) ?></td>
+                            <td class="text-center">
+                                <?php
+                                    $dur = $data->durasi_sewa;
+                                    if($dur == '1 hari' ){ ?>
+                                        Rp.<?= number_format($data->biaya_driver*1+$data->harga*1,0,',','.')?>
+                                    <?php }else if( $dur == '2 hari'){ ?>
+                                        Rp.<?= number_format($data->biaya_driver*2+$data->harga*2,0,',','.') ?>
+                                    <?php }else if( $dur == 'lebih 3 hari'){ ?>
+                                        Rp.<?= number_format($data->biaya_driver*3.8+$data->harga*3.8,0,',','.') ?>
+                                <?php } ?>
+                            </td>
                             <td class="text-center"><?=$data->mobil_nama_mobil?></td>
                             <td class="text-center"><?=$data->status?></td>
                             <td class="text-center">
@@ -74,8 +85,8 @@
                             <a id="select" class="btn btn-xs" data-toggle="modal" data-target="#modal-detail"
                                 data-kodesewa="<?= $data->sewa_kode_sewa?>"
                                 data-namapengguna="<?= $data->name?>"
-                                data-tglsewa="<?= $data->sewa_tgl_sewa?>"
-                                data-tglkembali="<?= $data->sewa_tgl_kembali?>"
+                                data-tglsewa="<?= date('d/F/Y', strtotime($data->sewa_tgl_sewa))?>"
+                                data-tglkembali="<?= date('d/F/Y', strtotime($data->sewa_tgl_kembali))?>"
                                 data-lokasisewa="<?= $data->lokasi?>"
                                 data-pengambilan="<?= $data->waktu_pengambilan?>"
                                 data-emailpenyewa="<?= $data->email?>"
@@ -83,7 +94,15 @@
                                 data-durasi="<?= $data->durasi_sewa?>"
                                 data-driver="<?=number_format($data->biaya_driver,0,',','.')?>"
                                 data-hargamobil="<?=number_format($data->harga,0,',','.')?>"
-                                data-totalsemua="<?=number_format($data->biaya_driver+$data->harga,0,',','.')?>"
+                                <?php
+                                    $dur = $data->durasi_sewa;
+                                if($dur == '1 hari' ){ ?>
+                                data-totalsemua="<?=number_format($data->biaya_driver*1+$data->harga*1,0,',','.')?>"
+                                <?php }else if( $dur == '2 hari'){ ?>
+                                data-totalsemua="<?=number_format($data->biaya_driver*2+$data->harga*2,0,',','.')?>"
+                                <?php }else if( $dur == 'lebih 3 hari'){ ?>
+                                data-totalsemua="<?=number_format($data->biaya_driver*3.8+$data->harga*3.8,0,',','.')?>"
+                                <?php } ?>
                                 data-mobil="<?= $data->mobil_nama_mobil?>"
                                 data-statussewa="<?= $data->status?>"
                                 data-buktitransfer="
@@ -95,8 +114,44 @@
                                 ">Detail</a>
                             </td>
                         </tr>
+                            <?php 
+                                endforeach ;
+                            }else{
+                                echo "<tr>
+                                <td class='text-center'>
+                                -
+                                <td class='text-center'>
+                                -
+                                <td class='text-center'>
+                                -
+                                <td class='text-center'>
+                                -
+                                <td class='text-center'>
+                                -
+                                <td class='text-center'>
+                                -
+                                <td class='text-center'>
+                                -
+                                <td class='text-center'>
+                                -
+                                <td class='text-center'>
+                                -
+                                </td>
+                                </td>
+                                </td>
+                                </td>
+                                </td>
+                                </td>
+                                </td>
+                                </td>
+                                </td>
+                            </tr>";
+                            }
+                            
+                            ?>
                     </tbody>
-                            <?php endforeach ?>
+                             
+                            
                 </table>
             </div>
     </section>
