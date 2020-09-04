@@ -15,6 +15,12 @@ $route['biaya'] = 'driver';
 $route['edit%20biaya/(:num)'] = 'driver/edit/$1';
 // pengembalian mobil
 $route['pengembalian-mobil'] = 'pengembalian';
+// Laporan Sewa
+$route['laporan-sewa'] = 'laporan_sewa';
+// Laporan sewa Download semua
+$route['laporan-sewa/download-laporan'] = 'laporan_sewa/DownloadAll';
+// Laporan Sewa download
+$route['download/download-(:num)'] = 'laporan_sewa/downloadById/$1';
 
 // Bagian User
 // Menunggu Pembayaran
