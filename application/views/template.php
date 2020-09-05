@@ -323,11 +323,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 }else if($dur == '2 hari'){
                   echo"['".($data->sewa_tgl_sewa)."', '".($total*2)."'],";
                 }else{
-                  echo"['".($data->sewa_tgl_sewa)."', '".($total*3.8)."']";
-                }
-              } 
-              ?>
-      ],
+                  echo"['".($data->sewa_tgl_sewa)."', '".($total*3.8)."'],";
+                }} ?>],
           
       color: '#3c8dbc'
     }
