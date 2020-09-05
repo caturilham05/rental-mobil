@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="<?= base_url('assets/css/owl.transitions.css')?>" type="text/css">
 <link href="<?= base_url('assets/css/slick.css')?>" rel="stylesheet">
 <link href="<?= base_url('assets/css/bootstrap-slider.min.css')?>" rel="stylesheet">
-<link href="<?= base_url('assets/css/font-awesome.min.css')?>" rel="stylesheet">
+<link href="<?= base_url('assets/bower_components/font-awesome/css/font-awesome.min.css')?>" rel="stylesheet">
 		<link rel="stylesheet" id="switcher-css" type="text/css" href="<?= base_url('assets/switcher/css/switcher.css')?>" media="all" />
 		<link rel="alternate stylesheet" type="text/css" href="<?= base_url('assets/switcher/css/red.css')?>" title="red" media="all" data-default-color="true" />
 		<link rel="alternate stylesheet" type="text/css" href="<?= base_url('assets/switcher/css/orange.css')?>" title="orange" media="all" />
